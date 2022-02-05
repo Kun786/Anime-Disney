@@ -1,0 +1,11 @@
+img{
+    width: 80px;
+}
+
+a:hover{
+    text-shadow: 0 0 5px #6aaac9;
+}
+
+.left:hover{
+    text-shadow: 0 0 5px #6aaac9;
+}
