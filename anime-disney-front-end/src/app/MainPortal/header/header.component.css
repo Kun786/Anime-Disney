@@ -24,3 +24,7 @@ a:hover{
 .modal-footer{
     border-top: none !important;
 }
+
+.col-lg-12:hover{
+    cursor: pointer;
+}
