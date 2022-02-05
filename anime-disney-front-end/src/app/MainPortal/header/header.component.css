@@ -1,4 +1,4 @@
-img{
+.logo{
     width: 80px;
 }
 
@@ -8,4 +8,19 @@ a:hover{
 
 .left:hover{
     text-shadow: 0 0 5px #6aaac9;
+}
+.modal-content{
+    background-color: transparent !important;
+}
+
+.modal-title{
+    color: white;
+}
+
+.modal-header{
+    border-bottom: none !important;
+}
+
+.modal-footer{
+    border-top: none !important;
 }
