@@ -22,9 +22,9 @@ const Package = require('../package.json');
 const mongoose = require('mongoose');
 const _EnviormentalVariables = require('./EnviormentalVariables');
 
-const DatabaseName = 'InvestmentApp';
+const DatabaseName = 'AnimeDisney';
 process.env.DATABASE_URI
-mongoose.connect('process.env.DATABASE_URI', { useNewUrlParser: true, useUnifiedTopology: true }, (error,connection) => {
+mongoose.connect('mongodb+srv://mistxsnow:mistxsnow@mistxsnow.itlya.mongodb.net/animeDisney?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }, (error,connection) => {
     if (!error) {
         console.log(`\nMogoDb Connected Successfuly at 27017 with Database Name ${DatabaseName}\n`);
         console.log("Your App Has the Following Dependicies\n");

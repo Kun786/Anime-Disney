@@ -50,19 +50,11 @@ app.use(express.static(path.join(__dirname,'/frontEnd')));
 
 //Start Block Load Routes
 //LoadingRoutes in Variable
-const _AdminManagementRoute = require('./routes/AdminManagementRoute');
 const _UserManagementRoute = require('./routes/UserManagementRoute');
-const _PackageManagementRoute = require('./routes/PackageManagementRoute'); 
-const _VideoManagementRoute = require('./routes/VideoManagementRoute');
-const _WithDrawlManagementRoute = require('./routes/WithDrawlsManagementRoute');
 //LoadingRoutes in Variable
 
 //UsingRoutes
-app.use('/AdminManagement',_AdminManagementRoute);
 app.use('/UserManagement',_UserManagementRoute);
-app.use('/PackageManagement',_PackageManagementRoute);
-app.use('/VideoManagement',_VideoManagementRoute);
-app.use('/WithDrawlManagement',_WithDrawlManagementRoute);
 //UsingRoutes
 
 //End Block Load Routes
