@@ -14,12 +14,12 @@ const hashFunc = (fileName) => {
   };
 //Block Ends For Hashing the ImageUrl
 
+
 //Block Start MiddleWare For handling The Single Image WIth HashFunction.
-let UploadVideo = multer({
+let UploadPublicLogo = multer({
     storage: multer.diskStorage({
         destination: (req, next, cb) => {
-            console.log(req.body);
-            let path = `./assets/Products/${req.body.PackageName}`;
+            let path = `./assets/Public/PublicGif`;
             if (!fs.existsSync(path)) {
                 fs.mkdirSync(path, function (err,res) {
                     if (err) {
@@ -47,4 +47,4 @@ let UploadVideo = multer({
 });
 //Block Ends MiddleWare For handling The Single Image WIth HashFunction.
 
-module.exports = { UploadVideo };
+module.exports = { UploadPublicLogo };

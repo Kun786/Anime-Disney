@@ -42,9 +42,24 @@ const PostPublicLogo = async (req, res) => {
 //Start Block Change Gif
 const PostPublicGif = async (req, res) => {
     try {
-
+        const { filename, originalname, mimetype } = req.file;
+        const _PublicGifData = new _PublicGifModel({
+            ImageUrl:`Public/PublicLogo/${filename}`,
+            ImageName:originalname,
+            ImageType: mimetype
+        })
+        const _PublicGifToSave = await _PublicGifData.save();
+        res.json({
+            Message: 'Gif Saved Successfully',
+            Data: true,
+            Result: _PublicGifToSave
+        })
     } catch (error) {
-
+        res.json({
+            Message: error.message,
+            Data: false,
+            Result: null
+        })
     }
 }
 //End Block Change Gif
@@ -53,9 +68,24 @@ const PostPublicGif = async (req, res) => {
 //Start Block Change Music
 const PostPublicMusic = async (req, res) => {
     try {
-
+        const { filename, originalname, mimetype } = req.file;
+        const _PublicMusicData = new _PublicMusicModel({
+            MusicUrl:`Public/PublicLogo/${filename}`,
+            MusicName:originalname,
+            MusicType: mimetype
+        })
+        const _PublicMusicToSave = await _PublicMusicData.save();
+        res.json({
+            Message: 'Music Saved Successfully',
+            Data: true,
+            Result: _PublicMusicToSave
+        })
     } catch (error) {
-
+        res.json({
+            Message: error.message,
+            Data: false,
+            Result: null
+        })
     }
 }
 //End Block Change Music
