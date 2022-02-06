@@ -8,7 +8,7 @@ const UserSchema = mongoose.Schema({
     DOB: { type: String, required: true },
     Gender: { type: String, required: true },
     Password: { type: String, required: true },
-    PassCode: { type: String, required: true }
+    PassCode: { type: String}
 })
 
 UserSchema.pre('save', function(next){

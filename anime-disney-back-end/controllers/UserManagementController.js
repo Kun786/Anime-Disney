@@ -10,7 +10,7 @@ const UserRegister = async (req, res) => {
             Name: req.body.name,
             Email: req.body.email,
             DOB:req.body.dob,
-            Gender: req.body.package,
+            Gender: req.body.gender,
             Password: req.body.password,
             PassCode: req.body.password
         });
@@ -23,9 +23,9 @@ const UserRegister = async (req, res) => {
 
 const UserLogin = async (req, res) => {
     try {
-        _UserName = req.body.username;
+        _UserEmail = req.body.email;
         _Password = req.body.password;
-        const _UserToAuthenticate = await _UserCluster.findOne({ UserName: _UserName });
+        const _UserToAuthenticate = await _UserCluster.findOne({ Email: _UserEmail });
 
         if (_UserToAuthenticate === null) {
             return res.json({
@@ -51,26 +51,7 @@ const UserLogin = async (req, res) => {
             'UserLogin',
             { expiresIn: '1h' }
         )
-
-        if (_UserToAuthenticate.Status === 2) {
-            return res.json({
-                Message: 'You Cannot Login Because Your Account not Approved By Admin Please Contact Admin',
-                Data: null,
-                Token: _Token,
-                Result: _UserToAuthenticate.Status,
-                Id: _UserToAuthenticate._id
-            })
-        }
-
-        if (_UserToAuthenticate.Status === 0) {
-            return res.json({
-                Message: 'You cannot login as you are suspended by Admin',
-                Data: false,
-                Result: null
-            })
-        }
-
-
+        
         return res.json({
             Message: 'Authentication SuccessFull',
             Data: _Result,
