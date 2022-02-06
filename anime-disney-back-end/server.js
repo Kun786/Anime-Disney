@@ -51,10 +51,12 @@ app.use(express.static(path.join(__dirname,'/frontEnd')));
 //Start Block Load Routes
 //LoadingRoutes in Variable
 const _UserManagementRoute = require('./routes/UserManagementRoute');
+const _PublicManagementRoute = require('./routes/PublicManagementRoute');
 //LoadingRoutes in Variable
 
 //UsingRoutes
 app.use('/UserManagement',_UserManagementRoute);
+app.use('/PublicManagement',_PublicManagementRoute);
 //UsingRoutes
 
 //End Block Load Routes

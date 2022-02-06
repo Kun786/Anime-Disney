@@ -3,7 +3,7 @@ const Router = expres.Router();
 
 
 const { UserLogin, UserRegister } = require('../controllers/UserManagementController');
-const {UploadUserImage} = require('../libraryfiles/UploadUserImage');
+
 
 
 //Embdedded Data Route
