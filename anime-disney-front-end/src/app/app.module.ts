@@ -8,6 +8,7 @@ import { FooterComponent } from './MainPortal/footer/footer.component';
 import { HomeComponent } from './MainPortal/home/home.component';
 import { UserLoginComponent } from './ManagementPortal/UserManagement/user-login/user-login.component';
 import { UserRegisterComponent } from './ManagementPortal/UserManagement/user-register/user-register.component';
+import { AboutComponent } from './MainPortal/about/about.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { UserRegisterComponent } from './ManagementPortal/UserManagement/user-re
     FooterComponent,
     HomeComponent,
     UserLoginComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

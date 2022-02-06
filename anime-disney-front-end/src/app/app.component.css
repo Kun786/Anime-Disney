@@ -1,6 +1,6 @@
 .container-fluid{
-    background-image: url('../assets/Hatsune_Miku.png');
-    height: 98vh;
+    background-image: linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url('../assets/Hatsune_Miku.png');
+    height: 99vh;
     background-size: cover;
     background-position: center center;
 }
