@@ -44,7 +44,7 @@ const PostPublicGif = async (req, res) => {
     try {
         const { filename, originalname, mimetype } = req.file;
         const _PublicGifData = new _PublicGifModel({
-            ImageUrl:`Public/PublicLogo/${filename}`,
+            ImageUrl:`Public/PublicGif/${filename}`,
             ImageName:originalname,
             ImageType: mimetype
         })
@@ -70,7 +70,7 @@ const PostPublicMusic = async (req, res) => {
     try {
         const { filename, originalname, mimetype } = req.file;
         const _PublicMusicData = new _PublicMusicModel({
-            MusicUrl:`Public/PublicLogo/${filename}`,
+            MusicUrl:`Public/PublicMusic/${filename}`,
             MusicName:originalname,
             MusicType: mimetype
         })
@@ -93,9 +93,24 @@ const PostPublicMusic = async (req, res) => {
 //Start Block Change Video
 const PostPublicVideo = async (req, res) => {
     try {
-
+        const { filename, originalname, mimetype } = req.file;
+        const _PublicVideoData = new _PublicVideoModel({
+            VideoUrl:`Public/PublicVideo/${filename}`,
+            VideoName:originalname,
+            VideoType: mimetype
+        })
+        const _PublicVideoToSave = await _PublicVideoData.save();
+        res.json({
+            Message: 'Music Saved Successfully',
+            Data: true,
+            Result: _PublicVideoToSave
+        })
     } catch (error) {
-
+        res.json({
+            Message: error.message,
+            Data: false,
+            Result: null
+        })
     }
 }
 //End Block Change Video
@@ -103,9 +118,24 @@ const PostPublicVideo = async (req, res) => {
 //Start Block Change Picture
 const PostPublicPicture = async (req, res) => {
     try {
-
+        const { filename, originalname, mimetype } = req.file;
+        const _PublicPictureData = new _PublicPictureModel({
+            ImageUrl:`Public/PublicPicture/${filename}`,
+            ImageName:originalname,
+            ImageType: mimetype
+        })
+        const _PublicPictureToSave = await _PublicPictureData.save();
+        res.json({
+            Message: 'Music Saved Successfully',
+            Data: true,
+            Result: _PublicPictureToSave
+        })
     } catch (error) {
-
+        res.json({
+            Message: error.message,
+            Data: false,
+            Result: null
+        })
     }
 }
 //End Block Change Picture
@@ -113,9 +143,24 @@ const PostPublicPicture = async (req, res) => {
 //Start Block Change Background
 const PostPublicBackground = async (req, res) => {
     try {
-
+        const { filename, originalname, mimetype } = req.file;
+        const _PublicBackgroundData = new _PublicBackgroundModel({
+            ImageUrl:`Public/PublicPicture/${filename}`,
+            ImageName:originalname,
+            ImageType: mimetype
+        })
+        const _PublicBackgroundToSave = await _PublicBackgroundData.save();
+        res.json({
+            Message: 'Music Saved Successfully',
+            Data: true,
+            Result: _PublicBackgroundToSave
+        })
     } catch (error) {
-
+        res.json({
+            Message: error.message,
+            Data: false,
+            Result: null
+        })
     }
 }
 //End Block Change Background
