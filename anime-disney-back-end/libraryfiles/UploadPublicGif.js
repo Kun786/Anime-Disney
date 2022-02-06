@@ -16,7 +16,7 @@ const hashFunc = (fileName) => {
 
 
 //Block Start MiddleWare For handling The Single Image WIth HashFunction.
-let UploadPublicLogo = multer({
+let UploadPublicGif = multer({
     storage: multer.diskStorage({
         destination: (req, next, cb) => {
             let path = `./assets/Public/PublicGif`;
@@ -47,4 +47,4 @@ let UploadPublicLogo = multer({
 });
 //Block Ends MiddleWare For handling The Single Image WIth HashFunction.
 
-module.exports = { UploadPublicLogo };
+module.exports = { UploadPublicGif };

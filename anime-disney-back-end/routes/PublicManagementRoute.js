@@ -17,5 +17,6 @@ const { UploadPublicMusic } = require('../libraryfiles/UploadPublicMusic');
 
 //Embdedded Data Route
 Router.post('/PostPublicLogo',UploadPublicLogo.single('Logo'),PostPublicLogo);
-Router.post('/PostPublicGif',UploadPublicLogo.single('Gif'),PostPublicGif);
+Router.post('/PostPublicGif',UploadPublicGif.single('Gif'),PostPublicGif);
+Router.post('/PostPublicMusic',UploadPublicMusic.single('Music'),PostPublicMusic);
 module.exports = Router;

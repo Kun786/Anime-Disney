@@ -19,7 +19,7 @@ const hashFunc = (fileName) => {
 let UploadPublicMusic = multer({
     storage: multer.diskStorage({
         destination: (req, next, cb) => {
-            let path = `./assets/Public/PubliMusic`;
+            let path = `./assets/Public/PublicMusic`;
             if (!fs.existsSync(path)) {
                 fs.mkdirSync(path, function (err,res) {
                     if (err) {
