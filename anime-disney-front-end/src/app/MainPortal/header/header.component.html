@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <a class="navbar-brand ms-lg-5" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="ShowLogoModal()"
       [routerLink]="['']">
-      <img *ngIf="_ShowAlternateImage===false" [src]="_LogoImageUrl === '' ? 'https://www.animedisney.com/logo.png' : _LogoImageUrl" class="img-fluid logo">
+      <img *ngIf="_ShowAlternateImage===false" [src]="_LogoImageUrl" class="img-fluid logo">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,6 +49,8 @@
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
+
+      <!-- Logo Modal Body -->
       <div class="modal-content" *ngIf="_ShowLogoModal===true">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Change Logo</h5>
@@ -57,7 +59,7 @@
         <div class="modal-body">
           <p class="text-white text-center h3">
             Upload The Image Please<br>
-            <img *ngIf="_ShowAlternateImage===false" [src]="_LogoImageUrl === '' ? 'https://www.animedisney.com/logo.png' : _LogoImageUrl" class="img-fluid w-25"><br>
+            <img *ngIf="_ShowAlternateImage===false" [src]="_LogoImageUrl" class="img-fluid w-25"><br>
             <br><br>
             <span class="h6">Select an Image For Logo</span><br>
             <button type="button" class="btn btn-secondary">
@@ -73,6 +75,9 @@
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
+      <!-- Logo Modal Body -->
+
+      <!-- Gif Modal Body -->
       <div class="modal-content" *ngIf="_ShowGifModal===true">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Change Gif</h5>
@@ -80,7 +85,7 @@
         </div>
         <div class="modal-body">
           <p class="text-white text-center h3">
-            Upload The Image Please<br>
+            Upload The Gif Please<br>
           </p>
           <div class="row">
             <div class="col">
@@ -88,18 +93,20 @@
             </div>
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
-            <input type="file" name="uploadfile" id="img" style="display:none;" />
+            <input type="file" name="uploadfile" id="img" style="display:none;" (change)="GetGif($event)" />
             <label for="img">Select Image</label>
           </button>
         </div>
         <div class="modal-footer mb-5">
-          <button type="button" class="btn btn-secondary me-auto">
-            <input type="file" name="uploadfile" id="img" style="display:none;" />
-            <label for="img">Upload Image</label>
-          </button>
+          <form [formGroup]="GifForm" (ngSubmit)="SubmitGif()">
+            <button type="submit" class="btn btn-secondary mr-auto">Upload Gif</button>
+            </form>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
+       <!-- Gif Modal Body -->
+
+       <!-- Music Modal Body -->
       <div class="modal-content" *ngIf="_ShowMusicModal===true">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Change Music</h5>
@@ -107,18 +114,28 @@
         </div>
         <div class="modal-body">
           <p class="text-white text-center h3">
-            Upload The Image Please<br>
-            <img class="img-fluid w-50" src="../../../assets/Hatsune_Miku.png" alt="">
+            Upload The Music Please<br>
           </p>
+          <div class="row">
+            <div class="col">
+              <img class="img-fluid w-25" src="../../../assets/Hatsune_Miku.png" alt="">
+            </div>
+          </div>
+          <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
+            <input type="file" name="uploadfile" id="img" style="display:none;" (change)="GetMusic($event)" />
+            <label for="img">Select Music</label>
+          </button>
         </div>
         <div class="modal-footer mb-5">
-          <button type="button" class="btn btn-secondary me-auto">
-            <input type="file" name="uploadfile" id="img" style="display:none;" />
-            <label for="img">Upload Image</label>
-          </button>
+          <form [formGroup]="MusicForm" (ngSubmit)="SubmitMusic()">
+            <button type="submit" class="btn btn-secondary mr-auto">Upload Music</button>
+            </form>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
+      <!-- Music Modal Body -->
+
+      <!-- Video Modal Body -->
       <div class="modal-content" *ngIf="_ShowVideoModal===true">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">ChangeVideo</h5>
@@ -126,18 +143,28 @@
         </div>
         <div class="modal-body">
           <p class="text-white text-center h3">
-            Upload The Image Please<br>
-            <img class="img-fluid w-50" src="../../../assets/Hatsune_Miku.png" alt="">
+            Upload The Video Please<br>
           </p>
+          <div class="row">
+            <div class="col">
+              <img class="img-fluid w-25" src="../../../assets/Hatsune_Miku.png" alt="">
+            </div>
+          </div>
+          <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
+            <input type="file" name="uploadfile" id="img" style="display:none;" (change)="GetVideo($event)" />
+            <label for="img">Select Video</label>
+          </button>
         </div>
         <div class="modal-footer mb-5">
-          <button type="button" class="btn btn-secondary me-auto">
-            <input type="file" name="uploadfile" id="img" style="display:none;" />
-            <label for="img">Upload Image</label>
-          </button>
+          <form [formGroup]="VideoForm" (ngSubmit)="SubmitVideo()">
+            <button type="submit" class="btn btn-secondary mr-auto">Upload Video</button>
+            </form>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
+      <!-- Video Modal Body -->
+
+      <!-- Picture Modal Body -->
       <div class="modal-content" *ngIf="_ShowPictureModal===true">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Change Picture</h5>
@@ -145,18 +172,28 @@
         </div>
         <div class="modal-body">
           <p class="text-white text-center h3">
-            Upload The Image Please<br>
-            <img class="img-fluid w-50" src="../../../assets/Hatsune_Miku.png" alt="">
+            Upload The Picture Please<br>
           </p>
+          <div class="row">
+            <div class="col">
+              <img class="img-fluid w-25" src="../../../assets/Hatsune_Miku.png" alt="">
+            </div>
+          </div>
+          <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
+            <input type="file" name="uploadfile" id="img" style="display:none;" (change)="GetPicture($event)" />
+            <label for="img">Select Picture</label>
+          </button>
         </div>
         <div class="modal-footer mb-5">
-          <button type="button" class="btn btn-secondary me-auto">
-            <input type="file" name="uploadfile" id="img" style="display:none;" />
-            <label for="img">Upload Image</label>
-          </button>
+          <form [formGroup]="PictureForm" (ngSubmit)="SubmitPicture()">
+            <button type="submit" class="btn btn-secondary mr-auto">Upload Picture</button>
+            </form>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
+      <!-- Picture Modal Body -->
+
+      <!-- Background Modal Body -->
       <div class="modal-content" *ngIf="_ShowBackgroundModal===true">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Change Background</h5>
@@ -164,17 +201,26 @@
         </div>
         <div class="modal-body">
           <p class="text-white text-center h3">
-            Upload The Image Please<br>
-            <img class="img-fluid w-50" src="../../../assets/Hatsune_Miku.png" alt="">
+            Upload The Background Please<br>
           </p>
+          <div class="row">
+            <div class="col">
+              <img class="img-fluid w-25" src="../../../assets/Hatsune_Miku.png" alt="">
+            </div>
+          </div>
+          <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
+            <input type="file" name="uploadfile" id="img" style="display:none;" (change)="GetBackground($event)" />
+            <label for="img">Select Image</label>
+          </button>
         </div>
         <div class="modal-footer mb-5">
-          <button type="button" class="btn btn-secondary me-auto">
-            <input type="file" name="uploadfile" id="img" style="display:none;" />
-            <label for="img">Upload Image</label>
-          </button>
+          <form [formGroup]="BackgroundForm" (ngSubmit)="SubmitBackground()">
+            <button type="submit" class="btn btn-secondary mr-auto">Upload Image</button>
+            </form>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
+      <!-- Background Modal Body -->
+      
     </div>
   </div>

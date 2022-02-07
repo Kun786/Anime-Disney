@@ -20,13 +20,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
   _ShowVideoModal=false;
   _ShowBackgroundModal=false;
   LogoForm:any = FormGroup;
+  GifForm:any = FormGroup;
+  MusicForm:any = FormGroup;
+  VideoForm:any = FormGroup;
+  PictureForm:any = FormGroup;
+  BackgroundForm:any = FormGroup;
   _LogoImageUrl='';
 
 
   //Subscription
   __PostLogoSubscription?:Subscription;
   __GetLogoSubscription?:Subscription;
-  constructor(private _FormBuilder: FormBuilder, private _PublicService:PublicService) { this.InitializeLogoForm() }
+  constructor(private _FormBuilder: FormBuilder, private _PublicService:PublicService) { 
+    this.InitializeLogoForm(),
+    this.InitializeGifForm(),
+    this.InitializeMusicForm(),
+    this.InitializeVideoForm(),
+    this.InitializePictureForm(),
+    this.InitializeBackgroundForm()
+   }
 
   ngOnInit(): void {
     this.FetchPublicLogo();
@@ -39,9 +51,64 @@ export class HeaderComponent implements OnInit, OnDestroy {
     })
   }
 
+  InitializeGifForm(){
+    this.GifForm = this._FormBuilder.group({
+      Gif:['']
+    })
+  }
+
+  InitializeMusicForm(){
+    this.MusicForm = this._FormBuilder.group({
+      Music:['']
+    })
+  }
+
+  InitializeVideoForm(){
+    this.VideoForm = this._FormBuilder.group({
+      Video:['']
+    })
+  }
+
+  InitializePictureForm(){
+    this.PictureForm = this._FormBuilder.group({
+      Picture:['']
+    })
+  }
+
+  InitializeBackgroundForm(){
+    this.BackgroundForm = this._FormBuilder.group({
+      Background:['']
+    })
+  }
+
   GetLogo(event:any){
     let _GetImage=event.target.files[0];
     this.LogoForm.get('Logo').setValue(_GetImage);
+  }
+
+  GetGif(event:any){
+    let _GetGif=event.target.files[0];
+    this.GifForm.get('Gif').setValue(_GetGif);
+  }
+
+  GetMusic(event:any){
+    let _GetMusic=event.target.files[0];
+    this.MusicForm.get('Music').setValue(_GetMusic);
+  }
+
+  GetVideo(event:any){
+    let _GetVideo=event.target.files[0];
+    this.GifForm.get('Video').setValue(_GetVideo);
+  }
+
+  GetPicture(event:any){
+    let _GetPicture=event.target.files[0];
+    this.GifForm.get('Picture').setValue(_GetPicture);
+  }
+
+  GetBackground(event:any){
+    let _GetBackground=event.target.files[0];
+    this.GifForm.get('Background').setValue(_GetBackground);
   }
 
   FetchPublicLogo(){
@@ -56,10 +123,27 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.__PostLogoSubscription = this._PublicService.PostPublicLogo(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); })
   }
 
-  ChangeImage(){
-    this._ShowAlternateImage=true;
+  SubmitGif(){
+
   }
 
+  SubmitMusic(){
+
+  }
+
+  SubmitVideo(){
+
+  }
+
+  SubmitPicture(){
+
+  }
+
+  SubmitBackground(){
+
+  }
+
+  
   ngOnDestroy(): void {
     if(this.__PostLogoSubscription){
       this.__PostLogoSubscription.unsubscribe();
