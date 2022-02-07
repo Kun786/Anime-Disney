@@ -7,7 +7,12 @@ import {
   PostPublicVideoUrl,
   PostPublicPictureUrl,
   PostPublicBackgroundUrl,
-  GetPublicLogoUrl
+  GetPublicLogoUrl,
+  GetPublicGifUrl,
+  GetPublicMusicUrl,
+  GetPublicVideoUrl,
+  GetPublicPictureUrl,
+  GetPublicBackgroundUrl
 } from '../../../configuration/GlobalConstants';
 
 @Injectable({
@@ -44,4 +49,25 @@ export class PublicService {
   GetPublicLogo(){
     return this._HttpClient.get(GetPublicLogoUrl);
   }
+
+  GetPublicGif(){
+    return this._HttpClient.get(GetPublicGifUrl);
+  }
+
+  GetPublicMusic(){
+    return this._HttpClient.get(GetPublicMusicUrl);
+  }
+
+  GetPublicVideo(){
+    return this._HttpClient.get(GetPublicVideoUrl);
+  }
+
+  GetPublicPicture(){
+    return this._HttpClient.get(GetPublicPictureUrl);
+  }
+
+  GetPublicBackground(){
+    return this._HttpClient.get(GetPublicBackgroundUrl);
+  }
+
 }

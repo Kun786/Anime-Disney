@@ -10,4 +10,9 @@ export const PostPublicVideoUrl =_BaseUrl+'/PublicManagement/PostPublicVideo';
 export const PostPublicPictureUrl =_BaseUrl+'/PublicManagement/PostPublicPicture';
 export const PostPublicBackgroundUrl =_BaseUrl+'/PublicManagement/PostPublicBackground';
 export const GetPublicLogoUrl = _BaseUrl+'/PublicManagement/GetPublicLogo';
+export const GetPublicGifUrl = _BaseUrl+'/PublicManagement/GetPublicGif';
+export const GetPublicMusicUrl = _BaseUrl+'/PublicManagement/GetPublicMusic';
+export const GetPublicPictureUrl = _BaseUrl+'/PublicManagement/GetPublicPicture';
+export const GetPublicVideoUrl = _BaseUrl+'/PublicManagement/GetPublicVideo';
+export const GetPublicBackgroundUrl = _BaseUrl+'/PublicManagement/GetPublicBackground';
 //Public Profile Api's

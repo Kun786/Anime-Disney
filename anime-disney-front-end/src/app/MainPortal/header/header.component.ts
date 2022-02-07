@@ -31,6 +31,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
   //Subscription
   __PostLogoSubscription?:Subscription;
   __GetLogoSubscription?:Subscription;
+  __PostGifSubscription?:Subscription;
+  __GetGifSubscription?:Subscription;
+  __PostMusicSubscription?:Subscription;
+  __GetMusicSubscription?:Subscription;
+  __PostVideoSubscription?:Subscription;
+  __GetVideoSubscription?:Subscription;
+  __PostPictureSubscription?:Subscription;
+  __GetPictureSubscription?:Subscription;
+  __PostBackgroundSubscription?:Subscription;
+  __GetBackgroundSubscription?:Subscription;
+
   constructor(private _FormBuilder: FormBuilder, private _PublicService:PublicService) { 
     this.InitializeLogoForm(),
     this.InitializeGifForm(),
@@ -98,17 +109,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   GetVideo(event:any){
     let _GetVideo=event.target.files[0];
-    this.GifForm.get('Video').setValue(_GetVideo);
+    this.VideoForm.get('Video').setValue(_GetVideo);
   }
 
   GetPicture(event:any){
     let _GetPicture=event.target.files[0];
-    this.GifForm.get('Picture').setValue(_GetPicture);
+    this.PictureForm.get('Picture').setValue(_GetPicture);
   }
 
   GetBackground(event:any){
     let _GetBackground=event.target.files[0];
-    this.GifForm.get('Background').setValue(_GetBackground);
+    this.BackgroundForm.get('Background').setValue(_GetBackground);
   }
 
   FetchPublicLogo(){
@@ -124,26 +135,36 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   SubmitGif(){
-
+    const _FormData = new FormData();
+    _FormData.append('Gif',this.GifForm.get('Gif').value);
+    this.__PostGifSubscription = this._PublicService.PostPublicGif(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); })
   }
 
   SubmitMusic(){
-
+    const _FormData = new FormData();
+    _FormData.append('Music',this.MusicForm.get('Music').value);
+    this.__PostMusicSubscription = this._PublicService.PostPublicMusic(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); })
   }
 
   SubmitVideo(){
-
+    const _FormData = new FormData();
+    _FormData.append('Video',this.VideoForm.get('Video').value);
+    this.__PostVideoSubscription = this._PublicService.PostPublicVideo(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); })
   }
 
   SubmitPicture(){
-
+    const _FormData = new FormData();
+    _FormData.append('Picture',this.PictureForm.get('Picture').value);
+    this.__PostPictureSubscription = this._PublicService.PostPublicPicture(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); })
   }
 
   SubmitBackground(){
-
+    const _FormData = new FormData();
+    _FormData.append('Background',this.BackgroundForm.get('Background').value);
+    this.__PostBackgroundSubscription = this._PublicService.PostPublicBackground(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); })
   }
 
-  
+
   ngOnDestroy(): void {
     if(this.__PostLogoSubscription){
       this.__PostLogoSubscription.unsubscribe();
