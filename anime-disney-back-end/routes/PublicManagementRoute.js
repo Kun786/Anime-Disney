@@ -9,7 +9,8 @@ const {
     PostPublicVideo, 
     PostPublicPicture, 
     PostPublicBackground, 
-    PostPublicAboutUs 
+    PostPublicAboutUs,
+    GetPublicLogo 
 } = require('../controllers/PublicManagementController');
 const { UploadPublicLogo } = require('../libraryfiles/UploadPublicLogo');
 const { UploadPublicGif } = require('../libraryfiles/UploadPublicGif');
@@ -25,4 +26,5 @@ Router.post('/PostPublicMusic',UploadPublicMusic.single('Music'),PostPublicMusic
 Router.post('/PostPublicVideo',UploadPublicVideo.single('Video'),PostPublicVideo);
 Router.post('/PostPublicPicture',UploadPublicPicture.single('PublicPicture'),PostPublicPicture);
 Router.post('/PostPublicBackground',UploadPublicBackground.single('PublicBackground'),PostPublicBackground);
+Router.get('/GetPublicLogo',GetPublicLogo);
 module.exports = Router;

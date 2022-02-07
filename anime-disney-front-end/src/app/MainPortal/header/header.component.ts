@@ -21,10 +21,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   //Subscription
   __PostLogoSubscription?:Subscription;
+  __GetLogoSubscription?:Subscription;
   constructor(private _FormBuilder: FormBuilder, private _PublicService:PublicService) { this.InitializeLogoForm() }
 
   ngOnInit(): void {
-
+    this.__GetLogoSubscription = this._PublicService.GetPublicLogo().subscribe((DataComingFromBackend) => {
+      console.log(DataComingFromBackend);
+    })
   }
 
   InitializeLogoForm(){

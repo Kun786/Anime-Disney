@@ -14,7 +14,7 @@ const _EnviormentalVariables = require('./configuration/EnviormentalVariables');
 
 
 //Global Constant
-const PORT = process.env.PORT || 1234;
+const PORT = 6666;
 
 //Block Start Initialize the APP
 const app = express();
@@ -42,9 +42,7 @@ app.all('*', (req, res, next) => {
 //End Block Setting the Headers for you Application
 
 //Start Block Set Static Folders (Absolute)
-app.use('/AdminImages',express.static('Admin'));
 app.use('/assets',express.static('assets'));
-app.use('/FeatureProducts',express.static('FeatureProducts'));
 app.use(express.static(path.join(__dirname,'/frontEnd')));
 //End Block Set Static Folders (Absolute)
 

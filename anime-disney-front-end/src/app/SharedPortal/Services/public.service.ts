@@ -6,7 +6,8 @@ import {
   PostPublicMusicUrl,
   PostPublicVideoUrl,
   PostPublicPictureUrl,
-  PostPublicBackgroundUrl
+  PostPublicBackgroundUrl,
+  GetPublicLogoUrl
 } from '../../../configuration/GlobalConstants';
 
 @Injectable({
@@ -18,5 +19,9 @@ export class PublicService {
 
   PostPublicLogo(_PayLoad:any){
     return this._HttpClient.post(PostPublicLogoUrl,_PayLoad);
+  }
+
+  GetPublicLogo(){
+    return this._HttpClient.get(GetPublicLogoUrl);
   }
 }

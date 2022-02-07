@@ -176,7 +176,27 @@ const PostPublicAboutUs = async (req, res) => {
 }
 //End Block Public About Us 
 
+
+//Start Block To Get Public Logo
+const GetPublicLogo = async (req, res) => {
+    try {
+        const _GetPublicLogo = await _PublicLogoModel.find().lean();
+        res.json({
+            Message:'Public Logo Found Successfully',
+            Data:true,
+            Result:_GetPublicLogo
+        })
+    } catch (error) {
+        res.json({
+            Message:error.message,
+            Data:false,
+            Result:null
+        })
+    }
+}
+//End Block To Get Public Logo
+
 //Chat
 //People are guest aur un ke profile picture jo top left pay hoo ge wo he hoo ge baki register walon ke alog hoo ga
 
-module.exports = { PostPublicLogo, PostPublicGif, PostPublicMusic, PostPublicVideo, PostPublicPicture, PostPublicBackground, PostPublicAboutUs };
+module.exports = { PostPublicLogo, PostPublicGif, PostPublicMusic, PostPublicVideo, PostPublicPicture, PostPublicBackground, PostPublicAboutUs, GetPublicLogo };
