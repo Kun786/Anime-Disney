@@ -88,8 +88,8 @@
             Upload The Gif Please<br>
           </p>
           <div class="row">
-            <div class="col">
-              <img class="img-fluid w-25" src="../../../assets/Hatsune_Miku.png" alt="">
+            <div class="col" *ngFor="let _Data of _GifImageArray">
+              <img class="img-fluid w-25" [src]="AssetsUrl+_Data.ImageUrl" alt="" download>
             </div>
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">

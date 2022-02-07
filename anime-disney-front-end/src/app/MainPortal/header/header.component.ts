@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('video') Video: ElementRef | any;
   @ViewChild('picture') Picture: ElementRef | any;
   @ViewChild('background') Background: ElementRef | any;
-
+  AssetsUrl = _AssetsUrl;
   
   //Class Properties
   _ShowAlternateImage=false;
@@ -35,6 +35,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   BackgroundForm:any = FormGroup;
   _LogoImageUrl='';
   _ImageName='';
+  _GifImageArray:any=[];
+  _MusicImageArray:any=[];
+  _VideoImageArray:any=[];
+  _PictureImageArray:any=[];
+  _BackgroundImageArray:any=[];
+  _BackgroundVideoArray:any=[];
 
 
   //Subscription
@@ -156,7 +162,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   FetchPublicGif(){
     this.__GetLogoSubscription = this._PublicService.GetPublicGif().subscribe((DataComingFromBackend:any) => {
-      console.log(DataComingFromBackend);
+      this._GifImageArray = DataComingFromBackend.Result;
     })
   }
 
