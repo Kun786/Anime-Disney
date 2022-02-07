@@ -145,9 +145,9 @@ const PostPublicBackground = async (req, res) => {
     try {
         const { filename, originalname, mimetype } = req.file;
         const _PublicBackgroundData = new _PublicBackgroundModel({
-            ImageUrl: `Public/PublicPicture/${filename}`,
-            ImageName: originalname,
-            ImageType: mimetype
+            MediaUrl: `Public/PublicBackGround/${filename}`,
+            MediaName: originalname,
+            MediaType: mimetype
         })
         const _PublicBackgroundToSave = await _PublicBackgroundData.save();
         res.json({
@@ -201,7 +201,7 @@ const GetPublicGif = async (req, res) => {
     try {
         const _GetPublicGif = await _PublicGifModel.find().lean();
         res.json({
-            Message: 'Public Logo Found Successfully',
+            Message: 'Public Gif Found Successfully',
             Data: true,
             Result: _GetPublicGif
         })
@@ -220,7 +220,7 @@ const GetPublicMusic = async (req, res) => {
     try {
         const _GetPublicMusic = await _PublicMusicModel.find().lean();
         res.json({
-            Message: 'Public Logo Found Successfully',
+            Message: 'Public Music Found Successfully',
             Data: true,
             Result: _GetPublicMusic
         })
@@ -239,7 +239,7 @@ const GetPublicVideo = async (req, res) => {
     try {
         const _GetPublicVideo = await _PublicVideoModel.find().lean();
         res.json({
-            Message: 'Public Logo Found Successfully',
+            Message: 'Public Video Found Successfully',
             Data: true,
             Result: _GetPublicVideo
         })
@@ -258,7 +258,7 @@ const GetPublicPicture = async (req, res) => {
     try {
         const _GetPublicPicture = await _PublicPictureModel.find().lean();
         res.json({
-            Message: 'Public Logo Found Successfully',
+            Message: 'Public Picture Found Successfully',
             Data: true,
             Result: _GetPublicPicture
         })
@@ -277,7 +277,7 @@ const GetPublicBackground = async (req, res) => {
     try {
         const _GetPublicBackground = await _PublicBackgroundModel.find().lean();
         res.json({
-            Message: 'Public Logo Found Successfully',
+            Message: 'Public Background Found Successfully',
             Data: true,
             Result: _GetPublicBackground
         })

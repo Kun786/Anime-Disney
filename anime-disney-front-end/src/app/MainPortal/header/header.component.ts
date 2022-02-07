@@ -53,6 +53,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.FetchPublicLogo();
+    this.FetchPublicGif();
+    this.FetchPublicMusic();
+    this.FetchPublicVideo();
+    this.FetchPublicPicture();
+    this.FetchPublicBackground();
   }
 
   
@@ -125,6 +130,36 @@ export class HeaderComponent implements OnInit, OnDestroy {
   FetchPublicLogo(){
     this.__GetLogoSubscription = this._PublicService.GetPublicLogo().subscribe((DataComingFromBackend:any) => {
       this._LogoImageUrl = _AssetsUrl+DataComingFromBackend.Result[0].ImageUrl;
+    })
+  }
+
+  FetchPublicGif(){
+    this.__GetLogoSubscription = this._PublicService.GetPublicGif().subscribe((DataComingFromBackend:any) => {
+      console.log(DataComingFromBackend);
+    })
+  }
+
+  FetchPublicMusic(){
+    this.__GetLogoSubscription = this._PublicService.GetPublicMusic().subscribe((DataComingFromBackend:any) => {
+      console.log(DataComingFromBackend);
+    })
+  }
+
+  FetchPublicVideo(){
+    this.__GetLogoSubscription = this._PublicService.GetPublicVideo().subscribe((DataComingFromBackend:any) => {
+      console.log(DataComingFromBackend);
+    })
+  }
+
+  FetchPublicPicture(){
+    this.__GetLogoSubscription = this._PublicService.GetPublicPicture().subscribe((DataComingFromBackend:any) => {
+      console.log(DataComingFromBackend);
+    })
+  }
+
+  FetchPublicBackground(){
+    this.__GetLogoSubscription = this._PublicService.GetPublicBackground().subscribe((DataComingFromBackend:any) => {
+      console.log(DataComingFromBackend);
     })
   }
 
