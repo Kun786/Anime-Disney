@@ -12,6 +12,11 @@ import { _AssetsUrl } from 'src/configuration/GlobalConstants';
 export class HeaderComponent implements OnInit, OnDestroy {
   //Class Miscellaneous Properties
   @ViewChild('logo') Logo: ElementRef | any;
+  @ViewChild('gif') Gif: ElementRef | any;
+  @ViewChild('music') Music: ElementRef | any;
+  @ViewChild('video') Video: ElementRef | any;
+  @ViewChild('picture') Picture: ElementRef | any;
+  @ViewChild('background') Background: ElementRef | any;
 
   
   //Class Properties
@@ -29,6 +34,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   PictureForm:any = FormGroup;
   BackgroundForm:any = FormGroup;
   _LogoImageUrl='';
+  _ImageName='';
 
 
   //Subscription
@@ -101,32 +107,44 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   GetLogo(event:any){
+    
     let _GetImage=event.target.files[0];
+    this._ImageName=event.target.files[0].name;
     this.LogoForm.get('Logo').setValue(_GetImage);
   }
 
   GetGif(event:any){
+    
     let _GetGif=event.target.files[0];
+    this._ImageName=event.target.files[0].name;
     this.GifForm.get('Gif').setValue(_GetGif);
   }
 
   GetMusic(event:any){
+    
     let _GetMusic=event.target.files[0];
+    this._ImageName=event.target.files[0].name;
     this.MusicForm.get('Music').setValue(_GetMusic);
   }
 
   GetVideo(event:any){
+    
     let _GetVideo=event.target.files[0];
+    this._ImageName=event.target.files[0].name;
     this.VideoForm.get('Video').setValue(_GetVideo);
   }
 
   GetPicture(event:any){
+    
     let _GetPicture=event.target.files[0];
+    this._ImageName=event.target.files[0].name;
     this.PictureForm.get('Picture').setValue(_GetPicture);
   }
 
   GetBackground(event:any){
+    
     let _GetBackground=event.target.files[0];
+    this._ImageName=event.target.files[0].name;
     this.BackgroundForm.get('Background').setValue(_GetBackground);
   }
 
@@ -172,36 +190,52 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.__PostLogoSubscription = this._PublicService.PostPublicLogo(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); })
     this.LogoForm.reset();
     this.Logo.nativeElement.value = null;
+    this._ImageName='';
   }
 
   SubmitGif(){
     const _FormData = new FormData();
     _FormData.append('Gif',this.GifForm.get('Gif').value);
-    this.__PostGifSubscription = this._PublicService.PostPublicGif(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); })
+    this.__PostGifSubscription = this._PublicService.PostPublicGif(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); });
+    this.GifForm.reset();
+    this.Gif.nativeElement.value = null;
+    this._ImageName='';
   }
 
   SubmitMusic(){
     const _FormData = new FormData();
     _FormData.append('Music',this.MusicForm.get('Music').value);
-    this.__PostMusicSubscription = this._PublicService.PostPublicMusic(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); })
+    this.__PostMusicSubscription = this._PublicService.PostPublicMusic(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); });
+    this.MusicForm.reset();
+    this.Music.nativeElement.value = null;
+    this._ImageName='';
   }
 
   SubmitVideo(){
     const _FormData = new FormData();
     _FormData.append('Video',this.VideoForm.get('Video').value);
-    this.__PostVideoSubscription = this._PublicService.PostPublicVideo(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); })
+    this.__PostVideoSubscription = this._PublicService.PostPublicVideo(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); });
+    this.VideoForm.reset();
+    this.Video.nativeElement.value = null;
+    this._ImageName='';
   }
 
   SubmitPicture(){
     const _FormData = new FormData();
     _FormData.append('Picture',this.PictureForm.get('Picture').value);
-    this.__PostPictureSubscription = this._PublicService.PostPublicPicture(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); })
+    this.__PostPictureSubscription = this._PublicService.PostPublicPicture(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); });
+    this.PictureForm.reset();
+    this.Picture.nativeElement.value = null;
+    this._ImageName='';
   }
 
   SubmitBackground(){
     const _FormData = new FormData();
     _FormData.append('Background',this.BackgroundForm.get('Background').value);
-    this.__PostBackgroundSubscription = this._PublicService.PostPublicBackground(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); })
+    this.__PostBackgroundSubscription = this._PublicService.PostPublicBackground(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); });
+    this.BackgroundForm.reset();
+    this.Background.nativeElement.value = null;
+    this._ImageName='';
   }
 
 

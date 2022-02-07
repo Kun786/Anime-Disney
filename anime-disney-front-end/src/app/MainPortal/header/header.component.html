@@ -62,10 +62,9 @@
             <img *ngIf="_ShowAlternateImage===false" [src]="_LogoImageUrl" class="img-fluid w-25"><br>
             <br><br>
             <span class="h6">Select an Image For Logo</span><br>
-            <input #logo type="file" (change)="GetLogo($event)"/>
-            <button type="button" class="btn btn-secondary">
-              
-              <!-- <label for="img">Select Image</label> -->
+            <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
+              <input #logo type="file" name="uploadfile" id="img" style="display:none;" (change)="GetLogo($event)" />
+              <label for="img">Select Image</label> {{_ImageName}}
             </button>
           </p>
         </div>
@@ -95,7 +94,7 @@
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
             <input #gif type="file" name="uploadfile" id="img" style="display:none;" (change)="GetGif($event)" />
-            <label for="img">Select Image</label>
+            <label for="img">Select Image</label> {{_ImageName}}
           </button>
         </div>
         <div class="modal-footer mb-5">
@@ -124,7 +123,7 @@
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
             <input #music type="file" name="uploadfile" id="img" style="display:none;" (change)="GetMusic($event)" />
-            <label for="img">Select Music</label>
+            <label for="img">Select Music</label> {{_ImageName}}
           </button>
         </div>
         <div class="modal-footer mb-5">
@@ -153,7 +152,7 @@
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
             <input #video type="file" name="uploadfile" id="img" style="display:none;" (change)="GetVideo($event)" />
-            <label for="img">Select Video</label>
+            <label for="img">Select Video</label> {{_ImageName}}
           </button>
         </div>
         <div class="modal-footer mb-5">
@@ -182,7 +181,7 @@
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
             <input #picture type="file" name="uploadfile" id="img" style="display:none;" (change)="GetPicture($event)" />
-            <label for="img">Select Picture</label>
+            <label for="img">Select Picture</label> {{_ImageName}}
           </button>
         </div>
         <div class="modal-footer mb-5">
@@ -218,7 +217,7 @@
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
             <input #background type="file" name="uploadfile" id="img" style="display:none;" (change)="GetBackground($event)" />
-            <label for="img">Select Image</label>
+            <label for="img">Select Image</label> {{_ImageName}}
           </button>
         </div>
         <div class="modal-footer mb-5">
