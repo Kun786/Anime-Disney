@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   _LogoImageUrl='';
   _ImageName='';
   _GifImageArray:any=[];
-  _MusicImageArray:any=[];
+  _MusicArray:any=[];
   _VideoImageArray:any=[];
   _PictureImageArray:any=[];
   _BackgroundImageArray:any=[];
@@ -168,7 +168,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   FetchPublicMusic(){
     this.__GetLogoSubscription = this._PublicService.GetPublicMusic().subscribe((DataComingFromBackend:any) => {
-      console.log(DataComingFromBackend);
+      this._MusicArray = DataComingFromBackend.Result;
     })
   }
 
