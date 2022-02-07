@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('video') Video: ElementRef | any;
   @ViewChild('picture') Picture: ElementRef | any;
   @ViewChild('background') Background: ElementRef | any;
+  @ViewChild('MusicResolve') MusicResolve: ElementRef | any;
   AssetsUrl = _AssetsUrl;
   
   //Class Properties
@@ -73,6 +74,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.FetchPublicVideo();
     this.FetchPublicPicture();
     this.FetchPublicBackground();
+    console.log(this.MusicResolve);
   }
 
   
