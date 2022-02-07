@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { PublicService } from 'src/app/SharedPortal/Services/public.service';
+import { _AssetsUrl } from 'src/configuration/GlobalConstants';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +10,8 @@ import { PublicService } from 'src/app/SharedPortal/Services/public.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+
+  //Class Properties
   _ShowAlternateImage=false;
   _ShowLogoModal=false;
   _ShowGifModal=false;
@@ -17,6 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   _ShowVideoModal=false;
   _ShowBackgroundModal=false;
   LogoForm:any = FormGroup;
+  _LogoImageUrl='';
 
 
   //Subscription
@@ -25,11 +29,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private _FormBuilder: FormBuilder, private _PublicService:PublicService) { this.InitializeLogoForm() }
 
   ngOnInit(): void {
-    this.__GetLogoSubscription = this._PublicService.GetPublicLogo().subscribe((DataComingFromBackend) => {
-      console.log(DataComingFromBackend);
-    })
+    this.FetchPublicLogo();
   }
 
+  
   InitializeLogoForm(){
     this.LogoForm = this._FormBuilder.group({
       Logo:['']
@@ -41,12 +44,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.LogoForm.get('Logo').setValue(_GetImage);
   }
 
+  FetchPublicLogo(){
+    this.__GetLogoSubscription = this._PublicService.GetPublicLogo().subscribe((DataComingFromBackend:any) => {
+      this._LogoImageUrl = _AssetsUrl+DataComingFromBackend.Result[0].ImageUrl;
+    })
+  }
+
   SubmitLogo(){
     const _FormData = new FormData();
     _FormData.append('Logo',this.LogoForm.get('Logo').value);
-    this.__PostLogoSubscription = this._PublicService.PostPublicLogo(_FormData).subscribe((DataComingFromBackEnd :any )=>{
-      console.log(DataComingFromBackEnd);
-    })
+    this.__PostLogoSubscription = this._PublicService.PostPublicLogo(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); })
   }
 
   ChangeImage(){
@@ -56,6 +63,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if(this.__PostLogoSubscription){
       this.__PostLogoSubscription.unsubscribe();
+    }
+    if(this.__GetLogoSubscription){
+      this.__GetLogoSubscription.unsubscribe();
     }
   }
 

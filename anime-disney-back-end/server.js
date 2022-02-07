@@ -8,13 +8,12 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const morgan = require('morgan');
-const _EnviormentalVariables = require('./configuration/EnviormentalVariables');
 //Block End for Dependencies
 
 
 
 //Global Constant
-const PORT = 6666;
+const PORT = 5080;
 
 //Block Start Initialize the APP
 const app = express();
@@ -90,7 +89,7 @@ app.use((error,req,res,next)=>{
 
 //Starting the app
 app.listen(PORT,()=>{
-    console.log(`Server is running in ${_EnviormentalVariables._Port} mode on port ${PORT}`);
+    console.log(`Server is running in mode on port ${PORT}`);
 });
 
 // cron.schedule('*/3 * * * * *', function() {
