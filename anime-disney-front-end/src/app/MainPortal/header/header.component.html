@@ -62,9 +62,10 @@
             <img *ngIf="_ShowAlternateImage===false" [src]="_LogoImageUrl" class="img-fluid w-25"><br>
             <br><br>
             <span class="h6">Select an Image For Logo</span><br>
+            <input #logo type="file" (change)="GetLogo($event)"/>
             <button type="button" class="btn btn-secondary">
-              <input type="file" name="uploadfile" id="img" style="display:none;" (change)="GetLogo($event)"/>
-              <label for="img">Select Image</label>
+              
+              <!-- <label for="img">Select Image</label> -->
             </button>
           </p>
         </div>
@@ -93,7 +94,7 @@
             </div>
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
-            <input type="file" name="uploadfile" id="img" style="display:none;" (change)="GetGif($event)" />
+            <input #gif type="file" name="uploadfile" id="img" style="display:none;" (change)="GetGif($event)" />
             <label for="img">Select Image</label>
           </button>
         </div>
@@ -122,7 +123,7 @@
             </div>
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
-            <input type="file" name="uploadfile" id="img" style="display:none;" (change)="GetMusic($event)" />
+            <input #music type="file" name="uploadfile" id="img" style="display:none;" (change)="GetMusic($event)" />
             <label for="img">Select Music</label>
           </button>
         </div>
@@ -151,7 +152,7 @@
             </div>
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
-            <input type="file" name="uploadfile" id="img" style="display:none;" (change)="GetVideo($event)" />
+            <input #video type="file" name="uploadfile" id="img" style="display:none;" (change)="GetVideo($event)" />
             <label for="img">Select Video</label>
           </button>
         </div>
@@ -180,7 +181,7 @@
             </div>
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
-            <input type="file" name="uploadfile" id="img" style="display:none;" (change)="GetPicture($event)" />
+            <input #picture type="file" name="uploadfile" id="img" style="display:none;" (change)="GetPicture($event)" />
             <label for="img">Select Picture</label>
           </button>
         </div>
@@ -203,13 +204,20 @@
           <p class="text-white text-center h3">
             Upload The Background Please<br>
           </p>
+          <h6 class="text-center text-white">Pictures</h6>
+          <div class="row">
+            <div class="col">
+              <img class="img-fluid w-25" src="../../../assets/Hatsune_Miku.png" alt="">
+            </div>
+          </div>
+          <h6 class="text-center text-white">Videos</h6>
           <div class="row">
             <div class="col">
               <img class="img-fluid w-25" src="../../../assets/Hatsune_Miku.png" alt="">
             </div>
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
-            <input type="file" name="uploadfile" id="img" style="display:none;" (change)="GetBackground($event)" />
+            <input #background type="file" name="uploadfile" id="img" style="display:none;" (change)="GetBackground($event)" />
             <label for="img">Select Image</label>
           </button>
         </div>

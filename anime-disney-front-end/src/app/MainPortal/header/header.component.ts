@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { PublicService } from 'src/app/SharedPortal/Services/public.service';
@@ -10,7 +10,10 @@ import { _AssetsUrl } from 'src/configuration/GlobalConstants';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  //Class Miscellaneous Properties
+  @ViewChild('logo') Logo: ElementRef | any;
 
+  
   //Class Properties
   _ShowAlternateImage=false;
   _ShowLogoModal=false;
@@ -167,6 +170,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     const _FormData = new FormData();
     _FormData.append('Logo',this.LogoForm.get('Logo').value);
     this.__PostLogoSubscription = this._PublicService.PostPublicLogo(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); })
+    this.LogoForm.reset();
+    this.Logo.nativeElement.value = null;
   }
 
   SubmitGif(){
