@@ -1,166 +1,173 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
-    <div class="container-fluid">
-      <a class="navbar-brand ms-lg-5" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="ShowLogoModal()" [routerLink]="['']">
-        <img *ngIf="_ShowAlternateImage===false"src="https://www.animedisney.com/logo.png" class="img-fluid logo">
-        <img *ngIf="_ShowAlternateImage===true" src="" class="img-fluid">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active h2" aria-current="page" [routerLink]="['/home']">Anime Disney</a>
-            </li>
-          </ul>
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-          <li class="nav-item" (click)="ShowGifModal()" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <a [routerLink]="['']" class="nav-link active">GIF</a>
-          </li>
-          <li class="nav-item" (click)="ShowMusicModal()" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <a [routerLink]="['']" class="nav-link" >MUSIC</a>
-          </li>
-          <li class="nav-item" (click)="ShowVideoModal()" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <a class="nav-link" [routerLink]="['']">VIDEO</a>
-          </li>
-          <li class="nav-item" (click)="ShowPictureModal()" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <a class="nav-link" [routerLink]="['']">PICTURE</a>
-          </li>
-          <li class="nav-item" (click)="ShowBackgroundModal()" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <a class="nav-link" [routerLink]="['']">BACKGROUND</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a routerLink="/about" class="nav-link">Kitty ( = ^ . ^ = ) Meow</a>
-          </li>
-        </ul>
-        <div class="left d-flex mx-lg-5 text-white">
-            <div class="row">
-              <div class="col-lg-12" [routerLink]="['/login']" >Login</div>
-              <div class="col-lg-12" [routerLink]="['/register']" >Register</div>
-            </div>
+  <div class="container-fluid">
+    <a class="navbar-brand ms-lg-5" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="ShowLogoModal()"
+      [routerLink]="['']">
+      <img *ngIf="_ShowAlternateImage===false" src="https://www.animedisney.com/logo.png" class="img-fluid logo">
+      <img *ngIf="_ShowAlternateImage===true" src="" class="img-fluid">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active h2" aria-current="page" [routerLink]="['/home']">Anime Disney</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item" (click)="ShowGifModal()" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <a [routerLink]="['']" class="nav-link active">GIF</a>
+        </li>
+        <li class="nav-item" (click)="ShowMusicModal()" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <a [routerLink]="['']" class="nav-link">MUSIC</a>
+        </li>
+        <li class="nav-item" (click)="ShowVideoModal()" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <a class="nav-link" [routerLink]="['']">VIDEO</a>
+        </li>
+        <li class="nav-item" (click)="ShowPictureModal()" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <a class="nav-link" [routerLink]="['']">PICTURE</a>
+        </li>
+        <li class="nav-item" (click)="ShowBackgroundModal()" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <a class="nav-link" [routerLink]="['']">BACKGROUND</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a routerLink="/about" class="nav-link">Kitty ( = ^ . ^ = ) Meow</a>
+        </li>
+      </ul>
+      <div class="left d-flex mx-lg-5 text-white">
+        <div class="row">
+          <div class="col-lg-12" [routerLink]="['/login']">Login</div>
+          <div class="col-lg-12" [routerLink]="['/register']">Register</div>
         </div>
       </div>
     </div>
+  </div>
 
 
-    <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen">
-    <div class="modal-content" *ngIf="_ShowLogoModal===true">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Change Logo</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content" *ngIf="_ShowLogoModal===true">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Change Logo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-white text-center h3">
+            Upload The Image Please<br>
+            <img *ngIf="_ShowAlternateImage===false" src="https://www.animedisney.com/logo.png" class="img-fluid w-25 h-25"><br>
+            <br><br>
+            <span class="h6">Select an Image For Logo</span><br>
+            <button type="button" class="btn btn-secondary">
+              <input type="file" name="uploadfile" id="img" style="display:none;" (change)="GetLogo($event)"/>
+              <label for="img">Select Image</label>
+            </button>
+          </p>
+        </div>
+        <div class="modal-footer mb-5">
+          <form [formGroup]="LogoForm" (ngSubmit)="SubmitLogo()">
+          <button type="submit" class="btn btn-secondary mr-auto">Upload Image</button>
+          </form>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
       </div>
-      <div class="modal-body">
-            <p class="text-white text-center h3">
-              Upload The Image Please<br>
-              <img class="img-fluid w-50" src="../../../assets/Hatsune_Miku.png" alt="">
-            </p>        
+      <div class="modal-content" *ngIf="_ShowGifModal===true">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Change Gif</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-white text-center h3">
+            Upload The Image Please<br>
+            <img class="img-fluid w-50" src="../../../assets/Hatsune_Miku.png" alt="">
+          </p>
+        </div>
+        <div class="modal-footer mb-5">
+          <button type="button" class="btn btn-secondary me-auto">
+            <input type="file" name="uploadfile" id="img" style="display:none;" />
+            <label for="img">Upload Image</label>
+          </button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
       </div>
-      <div class="modal-footer mb-5">
-        <button type="button" class="btn btn-secondary me-auto">
-          <input type="file" name="uploadfile" id="img" style="display:none;"/>
-          <label for="img">Upload Image</label>
-        </button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <div class="modal-content" *ngIf="_ShowMusicModal===true">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Change Music</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-white text-center h3">
+            Upload The Image Please<br>
+            <img class="img-fluid w-50" src="../../../assets/Hatsune_Miku.png" alt="">
+          </p>
+        </div>
+        <div class="modal-footer mb-5">
+          <button type="button" class="btn btn-secondary me-auto">
+            <input type="file" name="uploadfile" id="img" style="display:none;" />
+            <label for="img">Upload Image</label>
+          </button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
       </div>
-    </div>
-    <div class="modal-content" *ngIf="_ShowGifModal===true">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Change Gif</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-content" *ngIf="_ShowVideoModal===true">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">ChangeVideo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-white text-center h3">
+            Upload The Image Please<br>
+            <img class="img-fluid w-50" src="../../../assets/Hatsune_Miku.png" alt="">
+          </p>
+        </div>
+        <div class="modal-footer mb-5">
+          <button type="button" class="btn btn-secondary me-auto">
+            <input type="file" name="uploadfile" id="img" style="display:none;" />
+            <label for="img">Upload Image</label>
+          </button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
       </div>
-      <div class="modal-body">
-            <p class="text-white text-center h3">
-              Upload The Image Please<br>
-              <img class="img-fluid w-50" src="../../../assets/Hatsune_Miku.png" alt="">
-            </p>        
+      <div class="modal-content" *ngIf="_ShowPictureModal===true">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Change Picture</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-white text-center h3">
+            Upload The Image Please<br>
+            <img class="img-fluid w-50" src="../../../assets/Hatsune_Miku.png" alt="">
+          </p>
+        </div>
+        <div class="modal-footer mb-5">
+          <button type="button" class="btn btn-secondary me-auto">
+            <input type="file" name="uploadfile" id="img" style="display:none;" />
+            <label for="img">Upload Image</label>
+          </button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
       </div>
-      <div class="modal-footer mb-5">
-        <button type="button" class="btn btn-secondary me-auto">
-          <input type="file" name="uploadfile" id="img" style="display:none;"/>
-          <label for="img">Upload Image</label>
-        </button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-    <div class="modal-content" *ngIf="_ShowMusicModal===true">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Change Music</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-            <p class="text-white text-center h3">
-              Upload The Image Please<br>
-              <img class="img-fluid w-50" src="../../../assets/Hatsune_Miku.png" alt="">
-            </p>        
-      </div>
-      <div class="modal-footer mb-5">
-        <button type="button" class="btn btn-secondary me-auto">
-          <input type="file" name="uploadfile" id="img" style="display:none;"/>
-          <label for="img">Upload Image</label>
-        </button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-    <div class="modal-content" *ngIf="_ShowVideoModal===true">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">ChangeVideo</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-            <p class="text-white text-center h3">
-              Upload The Image Please<br>
-              <img class="img-fluid w-50" src="../../../assets/Hatsune_Miku.png" alt="">
-            </p>        
-      </div>
-      <div class="modal-footer mb-5">
-        <button type="button" class="btn btn-secondary me-auto">
-          <input type="file" name="uploadfile" id="img" style="display:none;"/>
-          <label for="img">Upload Image</label>
-        </button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-    <div class="modal-content" *ngIf="_ShowPictureModal===true">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Change Picture</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-            <p class="text-white text-center h3">
-              Upload The Image Please<br>
-              <img class="img-fluid w-50" src="../../../assets/Hatsune_Miku.png" alt="">
-            </p>        
-      </div>
-      <div class="modal-footer mb-5">
-        <button type="button" class="btn btn-secondary me-auto">
-          <input type="file" name="uploadfile" id="img" style="display:none;"/>
-          <label for="img">Upload Image</label>
-        </button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-    <div class="modal-content" *ngIf="_ShowBackgroundModal===true">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Change Background</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-            <p class="text-white text-center h3">
-              Upload The Image Please<br>
-              <img class="img-fluid w-50" src="../../../assets/Hatsune_Miku.png" alt="">
-            </p>        
-      </div>
-      <div class="modal-footer mb-5">
-        <button type="button" class="btn btn-secondary me-auto">
-          <input type="file" name="uploadfile" id="img" style="display:none;"/>
-          <label for="img">Upload Image</label>
-        </button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <div class="modal-content" *ngIf="_ShowBackgroundModal===true">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Change Background</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-white text-center h3">
+            Upload The Image Please<br>
+            <img class="img-fluid w-50" src="../../../assets/Hatsune_Miku.png" alt="">
+          </p>
+        </div>
+        <div class="modal-footer mb-5">
+          <button type="button" class="btn btn-secondary me-auto">
+            <input type="file" name="uploadfile" id="img" style="display:none;" />
+            <label for="img">Upload Image</label>
+          </button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>

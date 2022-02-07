@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { PublicService } from 'src/app/SharedPortal/Services/public.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   _ShowAlternateImage=false;
   _ShowLogoModal=false;
   _ShowGifModal=false;
@@ -13,17 +16,44 @@ export class HeaderComponent implements OnInit {
   _ShowPictureModal=false;
   _ShowVideoModal=false;
   _ShowBackgroundModal=false;
-  constructor() { }
+  LogoForm:any = FormGroup;
+
+
+  //Subscription
+  __PostLogoSubscription?:Subscription;
+  constructor(private _FormBuilder: FormBuilder, private _PublicService:PublicService) { this.InitializeLogoForm() }
 
   ngOnInit(): void {
+
+  }
+
+  InitializeLogoForm(){
+    this.LogoForm = this._FormBuilder.group({
+      Logo:['']
+    })
+  }
+
+  GetLogo(event:any){
+    let _GetImage=event.target.files[0];
+    this.LogoForm.get('Logo').setValue(_GetImage);
+  }
+
+  SubmitLogo(){
+    const _FormData = new FormData();
+    _FormData.append('Logo',this.LogoForm.get('Logo').value);
+    this.__PostLogoSubscription = this._PublicService.PostPublicLogo(_FormData).subscribe((DataComingFromBackEnd :any )=>{
+      console.log(DataComingFromBackEnd);
+    })
   }
 
   ChangeImage(){
     this._ShowAlternateImage=true;
   }
 
-  GetAmazonImage(event:any){
-
+  ngOnDestroy(): void {
+    if(this.__PostLogoSubscription){
+      this.__PostLogoSubscription.unsubscribe();
+    }
   }
 
   ShowLogoModal(){this._ShowLogoModal=true;this._ShowGifModal=false;this._ShowMusicModal=false;this._ShowPictureModal=false;this._ShowVideoModal=false;this._ShowBackgroundModal=false}
