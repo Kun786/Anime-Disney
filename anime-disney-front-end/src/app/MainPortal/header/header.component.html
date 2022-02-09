@@ -148,8 +148,10 @@
             Upload The Video Please<br>
           </p>
           <div class="row">
-            <div class="col">
-              <img class="img-fluid w-25" src="../../../assets/Hatsune_Miku.png" alt="">
+            <div class="col" *ngFor="let _Data of _VideoArray">
+              <video width="320" height="240" controls>
+                <source [src]="AssetsUrl+_Data.VideoUrl" type="video/mp4">
+              </video>
             </div>
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
@@ -177,8 +179,8 @@
             Upload The Picture Please<br>
           </p>
           <div class="row">
-            <div class="col">
-              <img class="img-fluid w-25" src="../../../assets/Hatsune_Miku.png" alt="">
+            <div class="col" *ngFor="let _Data of _PictureImageArray">
+              <img class="img-fluid w-25" [src]="AssetsUrl+_Data.ImageUrl" alt="">
             </div>
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
@@ -207,24 +209,26 @@
           </p>
           <h6 class="text-center text-white">Pictures</h6>
           <div class="row">
-            <div class="col">
-              <img class="img-fluid w-25" src="../../../assets/Hatsune_Miku.png" alt="">
+            <div class="col" *ngFor="let _Data of _BackgroundImageArray">
+              <img class="img-fluid w-25" [src]="AssetsUrl+_Data.MediaUrl" alt="">
             </div>
           </div>
           <h6 class="text-center text-white">Videos</h6>
           <div class="row">
-            <div class="col">
-              <img class="img-fluid w-25" src="../../../assets/Hatsune_Miku.png" alt="">
+            <div class="col" *ngFor="let _Data of _BackgroundVideoArray">
+              <video width="320" height="240" controls>
+                <source [src]="AssetsUrl+_Data.MediaUrl" type="video/mp4">
+              </video>
             </div>
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
             <input #background type="file" name="uploadfile" id="img" style="display:none;" (change)="GetBackground($event)" />
-            <label for="img">Select Image</label>&nbsp;{{_ImageName}}
+            <label for="img">Select Backgroud</label>&nbsp;{{_ImageName}}
           </button>
         </div>
         <div class="modal-footer mb-5">
           <form [formGroup]="BackgroundForm" (ngSubmit)="SubmitBackground()">
-            <button type="submit" class="btn btn-secondary mr-auto">Upload Image</button>
+            <button type="submit" class="btn btn-secondary mr-auto">Upload Background</button>
             </form>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>

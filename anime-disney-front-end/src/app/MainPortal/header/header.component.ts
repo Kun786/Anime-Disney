@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   _ImageName='';
   _GifImageArray:any=[];
   _MusicArray:any=[];
-  _VideoImageArray:any=[];
+  _VideoArray:any=[];
   _PictureImageArray:any=[];
   _BackgroundImageArray:any=[];
   _BackgroundVideoArray:any=[];
@@ -176,19 +176,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   FetchPublicVideo(){
     this.__GetLogoSubscription = this._PublicService.GetPublicVideo().subscribe((DataComingFromBackend:any) => {
-      console.log(DataComingFromBackend);
+      this._VideoArray = DataComingFromBackend.Result;
     })
   }
 
   FetchPublicPicture(){
     this.__GetLogoSubscription = this._PublicService.GetPublicPicture().subscribe((DataComingFromBackend:any) => {
-      console.log(DataComingFromBackend);
+      this._PictureImageArray = DataComingFromBackend.Result;
     })
   }
 
   FetchPublicBackground(){
     this.__GetLogoSubscription = this._PublicService.GetPublicBackground().subscribe((DataComingFromBackend:any) => {
-      console.log(DataComingFromBackend);
+      DataComingFromBackend.Result.forEach((_Objects:any) => {
+        if(_Objects.MediaType === "video/mp4"){
+          this._BackgroundVideoArray.push(_Objects);
+        }else{
+          this._BackgroundImageArray.push(_Objects);
+        }
+      })
     })
   }
 
