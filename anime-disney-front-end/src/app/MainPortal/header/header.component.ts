@@ -212,7 +212,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   SubmitGif() {
-    if (this.GifForm.get('Logo').value === ('' || null)) {
+    if (this.GifForm.get('Gif').value === ('' || null)) {
       null;
     } else {
       const _FormData = new FormData();
@@ -228,7 +228,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   SubmitMusic() {
-    if (this.MusicForm.get('Logo').value === ('' || null)) {
+    if (this.MusicForm.get('Music').value === ('' || null)) {
       null;
     } else {
       const _FormData = new FormData();
@@ -245,7 +245,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   SubmitVideo() {
-    if (this.VideoForm.get('Logo').value === ('' || null)) {
+    if (this.VideoForm.get('Video').value === ('' || null)) {
       null;
     } else {
       const _FormData = new FormData();
@@ -261,7 +261,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   SubmitPicture() {
-    if (this.PictureForm.get('Logo').value === ('' || null)) {
+    if (this.PictureForm.get('Picture').value === ('' || null)) {
       null;
     } else {
       const _FormData = new FormData();
@@ -277,7 +277,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   SubmitBackground() {
-    if (this.BackgroundForm.get('Logo').value === ('' || null)) {
+    if (this.BackgroundForm.get('Background').value === ('' || null)) {
       null;
     } else {
       const _FormData = new FormData();
