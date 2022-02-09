@@ -214,6 +214,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.GifForm.reset();
     this.Gif.nativeElement.value = null;
     this._ImageName='';
+    this._GifImageArray=[];
   }
 
   SubmitMusic(){
@@ -223,6 +224,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.MusicForm.reset();
     this.Music.nativeElement.value = null;
     this._ImageName='';
+    this._MusicArray=[]
   }
 
   SubmitVideo(){
@@ -232,6 +234,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.VideoForm.reset();
     this.Video.nativeElement.value = null;
     this._ImageName='';
+    this._VideoArray=[];
   }
 
   SubmitPicture(){
@@ -241,6 +244,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.PictureForm.reset();
     this.Picture.nativeElement.value = null;
     this._ImageName='';
+    this._PictureImageArray=[];
   }
 
   SubmitBackground(){
@@ -250,6 +254,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.BackgroundForm.reset();
     this.Background.nativeElement.value = null;
     this._ImageName='';
+    this._BackgroundImageArray=[];
   }
 
 
