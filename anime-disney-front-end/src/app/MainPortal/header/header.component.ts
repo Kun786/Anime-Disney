@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { PublicService } from 'src/app/SharedPortal/Services/public.service';
 import { _AssetsUrl } from 'src/configuration/GlobalConstants';
@@ -19,53 +19,53 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('background') Background: ElementRef | any;
   @ViewChild('MusicResolve') MusicResolve: ElementRef | any;
   AssetsUrl = _AssetsUrl;
-  
+
   //Class Properties
-  _ShowAlternateImage=false;
-  _ShowLogoModal=false;
-  _ShowGifModal=false;
-  _ShowMusicModal=false;
-  _ShowPictureModal=false;
-  _ShowVideoModal=false;
-  _ShowBackgroundModal=false;
-  LogoForm:any = FormGroup;
-  GifForm:any = FormGroup;
-  MusicForm:any = FormGroup;
-  VideoForm:any = FormGroup;
-  PictureForm:any = FormGroup;
-  BackgroundForm:any = FormGroup;
-  _LogoImageUrl='';
-  _ImageName='';
-  _GifImageArray:any=[];
-  _MusicArray:any=[];
-  _VideoArray:any=[];
-  _PictureImageArray:any=[];
-  _BackgroundImageArray:any=[];
-  _BackgroundVideoArray:any=[];
+  _ShowAlternateImage = false;
+  _ShowLogoModal = false;
+  _ShowGifModal = false;
+  _ShowMusicModal = false;
+  _ShowPictureModal = false;
+  _ShowVideoModal = false;
+  _ShowBackgroundModal = false;
+  LogoForm: any = FormGroup;
+  GifForm: any = FormGroup;
+  MusicForm: any = FormGroup;
+  VideoForm: any = FormGroup;
+  PictureForm: any = FormGroup;
+  BackgroundForm: any = FormGroup;
+  _LogoImageUrl = '';
+  _ImageName = '';
+  _GifImageArray: any = [];
+  _MusicArray: any = [];
+  _VideoArray: any = [];
+  _PictureImageArray: any = [];
+  _BackgroundImageArray: any = [];
+  _BackgroundVideoArray: any = [];
 
 
   //Subscription
-  __PostLogoSubscription?:Subscription;
-  __GetLogoSubscription?:Subscription;
-  __PostGifSubscription?:Subscription;
-  __GetGifSubscription?:Subscription;
-  __PostMusicSubscription?:Subscription;
-  __GetMusicSubscription?:Subscription;
-  __PostVideoSubscription?:Subscription;
-  __GetVideoSubscription?:Subscription;
-  __PostPictureSubscription?:Subscription;
-  __GetPictureSubscription?:Subscription;
-  __PostBackgroundSubscription?:Subscription;
-  __GetBackgroundSubscription?:Subscription;
+  __PostLogoSubscription?: Subscription;
+  __GetLogoSubscription?: Subscription;
+  __PostGifSubscription?: Subscription;
+  __GetGifSubscription?: Subscription;
+  __PostMusicSubscription?: Subscription;
+  __GetMusicSubscription?: Subscription;
+  __PostVideoSubscription?: Subscription;
+  __GetVideoSubscription?: Subscription;
+  __PostPictureSubscription?: Subscription;
+  __GetPictureSubscription?: Subscription;
+  __PostBackgroundSubscription?: Subscription;
+  __GetBackgroundSubscription?: Subscription;
 
-  constructor(private _FormBuilder: FormBuilder, private _PublicService:PublicService) { 
+  constructor(private _FormBuilder: FormBuilder, private _PublicService: PublicService) {
     this.InitializeLogoForm(),
-    this.InitializeGifForm(),
-    this.InitializeMusicForm(),
-    this.InitializeVideoForm(),
-    this.InitializePictureForm(),
-    this.InitializeBackgroundForm()
-   }
+      this.InitializeGifForm(),
+      this.InitializeMusicForm(),
+      this.InitializeVideoForm(),
+      this.InitializePictureForm(),
+      this.InitializeBackgroundForm()
+  }
 
   ngOnInit(): void {
     this.FetchPublicLogo();
@@ -77,200 +77,214 @@ export class HeaderComponent implements OnInit, OnDestroy {
     console.log(this.MusicResolve);
   }
 
-  
-  InitializeLogoForm(){
+
+  InitializeLogoForm() {
     this.LogoForm = this._FormBuilder.group({
-      Logo:['']
+      Logo: ['',Validators.required]
     })
   }
 
-  InitializeGifForm(){
+  InitializeGifForm() {
     this.GifForm = this._FormBuilder.group({
-      Gif:['']
+      Gif: ['',Validators.required]
     })
   }
 
-  InitializeMusicForm(){
+  InitializeMusicForm() {
     this.MusicForm = this._FormBuilder.group({
-      Music:['']
+      Music: ['',Validators.required]
     })
   }
 
-  InitializeVideoForm(){
+  InitializeVideoForm() {
     this.VideoForm = this._FormBuilder.group({
-      Video:['']
+      Video: ['',Validators.required]
     })
   }
 
-  InitializePictureForm(){
+  InitializePictureForm() {
     this.PictureForm = this._FormBuilder.group({
-      Picture:['']
+      Picture: ['',Validators.required]
     })
   }
 
-  InitializeBackgroundForm(){
+  InitializeBackgroundForm() {
     this.BackgroundForm = this._FormBuilder.group({
-      Background:['']
+      Background: ['',Validators.required]
     })
   }
 
-  GetLogo(event:any){
-    
-    let _GetImage=event.target.files[0];
-    this._ImageName=event.target.files[0].name;
+  GetLogo(event: any) {
+
+    let _GetImage = event.target.files[0];
+    this._ImageName = event.target.files[0].name;
     this.LogoForm.get('Logo').setValue(_GetImage);
   }
 
-  GetGif(event:any){
-    
-    let _GetGif=event.target.files[0];
-    this._ImageName=event.target.files[0].name;
+  GetGif(event: any) {
+
+    let _GetGif = event.target.files[0];
+    this._ImageName = event.target.files[0].name;
     this.GifForm.get('Gif').setValue(_GetGif);
   }
 
-  GetMusic(event:any){
-    
-    let _GetMusic=event.target.files[0];
-    this._ImageName=event.target.files[0].name;
+  GetMusic(event: any) {
+
+    let _GetMusic = event.target.files[0];
+    this._ImageName = event.target.files[0].name;
     this.MusicForm.get('Music').setValue(_GetMusic);
   }
 
-  GetVideo(event:any){
-    
-    let _GetVideo=event.target.files[0];
-    this._ImageName=event.target.files[0].name;
+  GetVideo(event: any) {
+
+    let _GetVideo = event.target.files[0];
+    this._ImageName = event.target.files[0].name;
     this.VideoForm.get('Video').setValue(_GetVideo);
   }
 
-  GetPicture(event:any){
-    
-    let _GetPicture=event.target.files[0];
-    this._ImageName=event.target.files[0].name;
+  GetPicture(event: any) {
+
+    let _GetPicture = event.target.files[0];
+    this._ImageName = event.target.files[0].name;
     this.PictureForm.get('Picture').setValue(_GetPicture);
   }
 
-  GetBackground(event:any){
-    
-    let _GetBackground=event.target.files[0];
-    this._ImageName=event.target.files[0].name;
+  GetBackground(event: any) {
+
+    let _GetBackground = event.target.files[0];
+    this._ImageName = event.target.files[0].name;
     this.BackgroundForm.get('Background').setValue(_GetBackground);
   }
 
-  FetchPublicLogo(){
-    this.__GetLogoSubscription = this._PublicService.GetPublicLogo().subscribe((DataComingFromBackend:any) => {
-      this._LogoImageUrl = _AssetsUrl+DataComingFromBackend.Result[0].ImageUrl;
+  FetchPublicLogo() {
+    this.__GetLogoSubscription = this._PublicService.GetPublicLogo().subscribe((DataComingFromBackend: any) => {
+      this._LogoImageUrl = _AssetsUrl + DataComingFromBackend.Result[0].ImageUrl;
     })
   }
 
-  FetchPublicGif(){
-    this.__GetLogoSubscription = this._PublicService.GetPublicGif().subscribe((DataComingFromBackend:any) => {
+  FetchPublicGif() {
+    this.__GetLogoSubscription = this._PublicService.GetPublicGif().subscribe((DataComingFromBackend: any) => {
       this._GifImageArray = DataComingFromBackend.Result;
     })
   }
 
-  FetchPublicMusic(){
-    this.__GetLogoSubscription = this._PublicService.GetPublicMusic().subscribe((DataComingFromBackend:any) => {
+  FetchPublicMusic() {
+    this.__GetLogoSubscription = this._PublicService.GetPublicMusic().subscribe((DataComingFromBackend: any) => {
       this._MusicArray = DataComingFromBackend.Result;
     })
   }
 
-  FetchPublicVideo(){
-    this.__GetLogoSubscription = this._PublicService.GetPublicVideo().subscribe((DataComingFromBackend:any) => {
+  FetchPublicVideo() {
+    this.__GetLogoSubscription = this._PublicService.GetPublicVideo().subscribe((DataComingFromBackend: any) => {
       this._VideoArray = DataComingFromBackend.Result;
     })
   }
 
-  FetchPublicPicture(){
-    this.__GetLogoSubscription = this._PublicService.GetPublicPicture().subscribe((DataComingFromBackend:any) => {
+  FetchPublicPicture() {
+    this.__GetLogoSubscription = this._PublicService.GetPublicPicture().subscribe((DataComingFromBackend: any) => {
       this._PictureImageArray = DataComingFromBackend.Result;
     })
   }
 
-  FetchPublicBackground(){
-    this.__GetLogoSubscription = this._PublicService.GetPublicBackground().subscribe((DataComingFromBackend:any) => {
-      DataComingFromBackend.Result.forEach((_Objects:any) => {
-        if(_Objects.MediaType === "video/mp4"){
+  FetchPublicBackground() {
+    this.__GetLogoSubscription = this._PublicService.GetPublicBackground().subscribe((DataComingFromBackend: any) => {
+      DataComingFromBackend.Result.forEach((_Objects: any) => {
+        if (_Objects.MediaType === "video/mp4") {
           this._BackgroundVideoArray.push(_Objects);
-        }else{
+        } else {
           this._BackgroundImageArray.push(_Objects);
         }
       })
     })
   }
 
-  SubmitLogo(){
+  SubmitLogo() {
     const _FormData = new FormData();
-    _FormData.append('Logo',this.LogoForm.get('Logo').value);
-    this.__PostLogoSubscription = this._PublicService.PostPublicLogo(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); })
+    _FormData.append('Logo', this.LogoForm.get('Logo').value);
+    this.__PostLogoSubscription = this._PublicService.PostPublicLogo(_FormData).subscribe((DataComingFromBackEnd: any) => { this.ngOnInit(); })
     this.LogoForm.reset();
     this.Logo.nativeElement.value = null;
-    this._ImageName='';
+    this._ImageName = '';
   }
 
-  SubmitGif(){
+  SubmitGif() {
     const _FormData = new FormData();
-    _FormData.append('Gif',this.GifForm.get('Gif').value);
-    this.__PostGifSubscription = this._PublicService.PostPublicGif(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); });
+    _FormData.append('Gif', this.GifForm.get('Gif').value);
+    this.__PostGifSubscription = this._PublicService.PostPublicGif(_FormData).subscribe((DataComingFromBackEnd: any) => { 
+      this._GifImageArray = [];
+      this.ngOnInit(); 
+    });
     this.GifForm.reset();
     this.Gif.nativeElement.value = null;
-    this._ImageName='';
-    this._GifImageArray=[];
+    this._ImageName = '';
   }
 
-  SubmitMusic(){
+  SubmitMusic() {
     const _FormData = new FormData();
-    _FormData.append('Music',this.MusicForm.get('Music').value);
-    this.__PostMusicSubscription = this._PublicService.PostPublicMusic(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); });
+    _FormData.append('Music', this.MusicForm.get('Music').value);
+    this.__PostMusicSubscription = this._PublicService.PostPublicMusic(_FormData).subscribe((DataComingFromBackEnd: any) => { 
+      this._MusicArray = []
+      this.ngOnInit(); 
+    });
     this.MusicForm.reset();
     this.Music.nativeElement.value = null;
-    this._ImageName='';
-    this._MusicArray=[]
+    this._ImageName = '';
+    
   }
 
-  SubmitVideo(){
+  SubmitVideo() {
     const _FormData = new FormData();
-    _FormData.append('Video',this.VideoForm.get('Video').value);
-    this.__PostVideoSubscription = this._PublicService.PostPublicVideo(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); });
+    _FormData.append('Video', this.VideoForm.get('Video').value);
+    this.__PostVideoSubscription = this._PublicService.PostPublicVideo(_FormData).subscribe((DataComingFromBackEnd: any) => { 
+      this._VideoArray = [];
+      this.ngOnInit(); 
+    });
     this.VideoForm.reset();
     this.Video.nativeElement.value = null;
-    this._ImageName='';
-    this._VideoArray=[];
+    this._ImageName = '';
+    
   }
 
-  SubmitPicture(){
+  SubmitPicture() {
     const _FormData = new FormData();
-    _FormData.append('Picture',this.PictureForm.get('Picture').value);
-    this.__PostPictureSubscription = this._PublicService.PostPublicPicture(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); });
+    _FormData.append('Picture', this.PictureForm.get('Picture').value);
+    this.__PostPictureSubscription = this._PublicService.PostPublicPicture(_FormData).subscribe((DataComingFromBackEnd: any) => {
+      this._PictureImageArray = []
+      this.ngOnInit();
+    });
     this.PictureForm.reset();
     this.Picture.nativeElement.value = null;
-    this._ImageName='';
-    this._PictureImageArray=[];
+    this._ImageName = '';;
   }
 
-  SubmitBackground(){
+  SubmitBackground() {
     const _FormData = new FormData();
-    _FormData.append('Background',this.BackgroundForm.get('Background').value);
-    this.__PostBackgroundSubscription = this._PublicService.PostPublicBackground(_FormData).subscribe((DataComingFromBackEnd :any )=>{ this.ngOnInit(); });
+    _FormData.append('Background', this.BackgroundForm.get('Background').value);
+    this.__PostBackgroundSubscription = this._PublicService.PostPublicBackground(_FormData).subscribe((DataComingFromBackEnd: any) => { 
+      this._BackgroundImageArray = [];
+      this._BackgroundVideoArray = [];
+      this.ngOnInit(); 
+    });
     this.BackgroundForm.reset();
     this.Background.nativeElement.value = null;
-    this._ImageName='';
-    this._BackgroundImageArray=[];
+    this._ImageName = '';
+   
   }
 
 
   ngOnDestroy(): void {
-    if(this.__PostLogoSubscription){
+    if (this.__PostLogoSubscription) {
       this.__PostLogoSubscription.unsubscribe();
     }
-    if(this.__GetLogoSubscription){
+    if (this.__GetLogoSubscription) {
       this.__GetLogoSubscription.unsubscribe();
     }
   }
 
-  ShowLogoModal(){this._ShowLogoModal=true;this._ShowGifModal=false;this._ShowMusicModal=false;this._ShowPictureModal=false;this._ShowVideoModal=false;this._ShowBackgroundModal=false}
-  ShowGifModal(){this._ShowGifModal=true;this._ShowLogoModal=false;this._ShowMusicModal=false;this._ShowPictureModal=false;this._ShowVideoModal=false;this._ShowBackgroundModal=false}
-  ShowMusicModal(){this._ShowMusicModal=true;this._ShowGifModal=false;this._ShowLogoModal=false;this._ShowPictureModal=false;this._ShowVideoModal=false;this._ShowBackgroundModal=false}
-  ShowVideoModal(){this._ShowVideoModal=true;this._ShowGifModal=false;this._ShowMusicModal=false;this._ShowPictureModal=false;this._ShowLogoModal=false;this._ShowBackgroundModal=false}
-  ShowPictureModal(){this._ShowPictureModal=true;this._ShowGifModal=false;this._ShowMusicModal=false;this._ShowLogoModal=false;this._ShowVideoModal=false;this._ShowBackgroundModal=false}
-  ShowBackgroundModal(){this._ShowBackgroundModal=true;this._ShowGifModal=false;this._ShowMusicModal=false;this._ShowPictureModal=false;this._ShowVideoModal=false;this._ShowLogoModal=false}
+  ShowLogoModal() { this._ShowLogoModal = true; this._ShowGifModal = false; this._ShowMusicModal = false; this._ShowPictureModal = false; this._ShowVideoModal = false; this._ShowBackgroundModal = false }
+  ShowGifModal() { this._ShowGifModal = true; this._ShowLogoModal = false; this._ShowMusicModal = false; this._ShowPictureModal = false; this._ShowVideoModal = false; this._ShowBackgroundModal = false }
+  ShowMusicModal() { this._ShowMusicModal = true; this._ShowGifModal = false; this._ShowLogoModal = false; this._ShowPictureModal = false; this._ShowVideoModal = false; this._ShowBackgroundModal = false }
+  ShowVideoModal() { this._ShowVideoModal = true; this._ShowGifModal = false; this._ShowMusicModal = false; this._ShowPictureModal = false; this._ShowLogoModal = false; this._ShowBackgroundModal = false }
+  ShowPictureModal() { this._ShowPictureModal = true; this._ShowGifModal = false; this._ShowMusicModal = false; this._ShowLogoModal = false; this._ShowVideoModal = false; this._ShowBackgroundModal = false }
+  ShowBackgroundModal() { this._ShowBackgroundModal = true; this._ShowGifModal = false; this._ShowMusicModal = false; this._ShowPictureModal = false; this._ShowVideoModal = false; this._ShowLogoModal = false }
 }
