@@ -89,7 +89,9 @@
           </p>
           <div class="row">
             <div class="col" *ngFor="let _Data of _GifImageArray">
-              <img class="img-fluid w-25" [src]="AssetsUrl+_Data.ImageUrl" alt="" download>
+              <a [href]="AssetsUrl+_Data.ImageUrl" download>
+                <img class="img-fluid w-25" [src]="AssetsUrl+_Data.ImageUrl" alt="">
+              </a>
             </div>
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
@@ -118,8 +120,8 @@
           </p>
           <div class="row">
             <div class="col" *ngFor="let _Data of _MusicArray">
-              <audio controls>
-                <source [src]="AssetsUrl+_Data.MusicUrl" type="audio/ogg" #MusicResolve>
+              <audio controls #MusicResolve>
+                <source [src]="AssetsUrl+_Data.MusicUrl" type="audio/ogg">
               </audio>
             </div>
           </div>
@@ -132,7 +134,7 @@
           <form [formGroup]="MusicForm" (ngSubmit)="SubmitMusic()">
             <button type="submit" class="btn btn-secondary mr-auto">Upload Music</button>
             </form>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="StopMusic()">Close</button>
         </div>
       </div>
       <!-- Music Modal Body -->

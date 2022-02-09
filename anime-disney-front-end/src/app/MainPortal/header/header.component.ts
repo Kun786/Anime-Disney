@@ -293,6 +293,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
+  StopMusic(){
+    console.log(this.MusicResolve);
+    this.MusicResolve.nativeElement.pause();
+    this.MusicResolve.nativeElement.currentTime = 0;
+  }
 
   ngOnDestroy(): void {
     if (this.__PostLogoSubscription) {
