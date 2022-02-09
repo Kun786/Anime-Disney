@@ -199,76 +199,98 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   SubmitLogo() {
-    const _FormData = new FormData();
-    _FormData.append('Logo', this.LogoForm.get('Logo').value);
-    this.__PostLogoSubscription = this._PublicService.PostPublicLogo(_FormData).subscribe((DataComingFromBackEnd: any) => { this.ngOnInit(); })
-    this.LogoForm.reset();
-    this.Logo.nativeElement.value = null;
-    this._ImageName = '';
+    if (this.LogoForm.get('Logo').value === ('' || null)) {
+      null;
+    } else {
+      const _FormData = new FormData();
+      _FormData.append('Logo', this.LogoForm.get('Logo').value);
+      this.__PostLogoSubscription = this._PublicService.PostPublicLogo(_FormData).subscribe((DataComingFromBackEnd: any) => { this.ngOnInit(); })
+      this.LogoForm.reset();
+      this.Logo.nativeElement.value = null;
+      this._ImageName = '';
+    }
   }
 
   SubmitGif() {
-    const _FormData = new FormData();
-    _FormData.append('Gif', this.GifForm.get('Gif').value);
-    this.__PostGifSubscription = this._PublicService.PostPublicGif(_FormData).subscribe((DataComingFromBackEnd: any) => { 
-      this._GifImageArray = [];
-      this.ngOnInit(); 
-    });
-    this.GifForm.reset();
-    this.Gif.nativeElement.value = null;
-    this._ImageName = '';
+    if (this.GifForm.get('Logo').value === ('' || null)) {
+      null;
+    } else {
+      const _FormData = new FormData();
+      _FormData.append('Gif', this.GifForm.get('Gif').value);
+      this.__PostGifSubscription = this._PublicService.PostPublicGif(_FormData).subscribe((DataComingFromBackEnd: any) => {
+        this._GifImageArray = [];
+        this.ngOnInit();
+      });
+      this.GifForm.reset();
+      this.Gif.nativeElement.value = null;
+      this._ImageName = '';
+    }
   }
 
   SubmitMusic() {
-    const _FormData = new FormData();
-    _FormData.append('Music', this.MusicForm.get('Music').value);
-    this.__PostMusicSubscription = this._PublicService.PostPublicMusic(_FormData).subscribe((DataComingFromBackEnd: any) => { 
-      this._MusicArray = []
-      this.ngOnInit(); 
-    });
-    this.MusicForm.reset();
-    this.Music.nativeElement.value = null;
-    this._ImageName = '';
-    
+    if (this.MusicForm.get('Logo').value === ('' || null)) {
+      null;
+    } else {
+      const _FormData = new FormData();
+      _FormData.append('Music', this.MusicForm.get('Music').value);
+      this.__PostMusicSubscription = this._PublicService.PostPublicMusic(_FormData).subscribe((DataComingFromBackEnd: any) => {
+        this._MusicArray = []
+        this.ngOnInit();
+      });
+      this.MusicForm.reset();
+      this.Music.nativeElement.value = null;
+      this._ImageName = '';
+    }
+
   }
 
   SubmitVideo() {
-    const _FormData = new FormData();
-    _FormData.append('Video', this.VideoForm.get('Video').value);
-    this.__PostVideoSubscription = this._PublicService.PostPublicVideo(_FormData).subscribe((DataComingFromBackEnd: any) => { 
-      this._VideoArray = [];
-      this.ngOnInit(); 
-    });
-    this.VideoForm.reset();
-    this.Video.nativeElement.value = null;
-    this._ImageName = '';
-    
+    if (this.VideoForm.get('Logo').value === ('' || null)) {
+      null;
+    } else {
+      const _FormData = new FormData();
+      _FormData.append('Video', this.VideoForm.get('Video').value);
+      this.__PostVideoSubscription = this._PublicService.PostPublicVideo(_FormData).subscribe((DataComingFromBackEnd: any) => {
+        this._VideoArray = [];
+        this.ngOnInit();
+      });
+      this.VideoForm.reset();
+      this.Video.nativeElement.value = null;
+      this._ImageName = '';
+    }
   }
 
   SubmitPicture() {
-    const _FormData = new FormData();
-    _FormData.append('Picture', this.PictureForm.get('Picture').value);
-    this.__PostPictureSubscription = this._PublicService.PostPublicPicture(_FormData).subscribe((DataComingFromBackEnd: any) => {
-      this._PictureImageArray = []
-      this.ngOnInit();
-    });
-    this.PictureForm.reset();
-    this.Picture.nativeElement.value = null;
-    this._ImageName = '';;
+    if (this.PictureForm.get('Logo').value === ('' || null)) {
+      null;
+    } else {
+      const _FormData = new FormData();
+      _FormData.append('Picture', this.PictureForm.get('Picture').value);
+      this.__PostPictureSubscription = this._PublicService.PostPublicPicture(_FormData).subscribe((DataComingFromBackEnd: any) => {
+        this._PictureImageArray = []
+        this.ngOnInit();
+      });
+      this.PictureForm.reset();
+      this.Picture.nativeElement.value = null;
+      this._ImageName = '';
+    }
   }
 
   SubmitBackground() {
-    const _FormData = new FormData();
-    _FormData.append('Background', this.BackgroundForm.get('Background').value);
-    this.__PostBackgroundSubscription = this._PublicService.PostPublicBackground(_FormData).subscribe((DataComingFromBackEnd: any) => { 
-      this._BackgroundImageArray = [];
-      this._BackgroundVideoArray = [];
-      this.ngOnInit(); 
-    });
-    this.BackgroundForm.reset();
-    this.Background.nativeElement.value = null;
-    this._ImageName = '';
-   
+    if (this.BackgroundForm.get('Logo').value === ('' || null)) {
+      null;
+    } else {
+      const _FormData = new FormData();
+      _FormData.append('Background', this.BackgroundForm.get('Background').value);
+      this.__PostBackgroundSubscription = this._PublicService.PostPublicBackground(_FormData).subscribe((DataComingFromBackEnd: any) => {
+        this._BackgroundImageArray = [];
+        this._BackgroundVideoArray = [];
+        this.ngOnInit();
+      });
+      this.BackgroundForm.reset();
+      this.Background.nativeElement.value = null;
+      this._ImageName = '';
+    }
   }
 
 
