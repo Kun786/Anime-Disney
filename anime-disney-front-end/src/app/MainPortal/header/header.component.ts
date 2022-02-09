@@ -80,37 +80,37 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   InitializeLogoForm() {
     this.LogoForm = this._FormBuilder.group({
-      Logo: ['',Validators.required]
+      Logo: ['']
     })
   }
 
   InitializeGifForm() {
     this.GifForm = this._FormBuilder.group({
-      Gif: ['',Validators.required]
+      Gif: ['']
     })
   }
 
   InitializeMusicForm() {
     this.MusicForm = this._FormBuilder.group({
-      Music: ['',Validators.required]
+      Music: ['']
     })
   }
 
   InitializeVideoForm() {
     this.VideoForm = this._FormBuilder.group({
-      Video: ['',Validators.required]
+      Video: ['']
     })
   }
 
   InitializePictureForm() {
     this.PictureForm = this._FormBuilder.group({
-      Picture: ['',Validators.required]
+      Picture: ['']
     })
   }
 
   InitializeBackgroundForm() {
     this.BackgroundForm = this._FormBuilder.group({
-      Background: ['',Validators.required]
+      Background: ['']
     })
   }
 
