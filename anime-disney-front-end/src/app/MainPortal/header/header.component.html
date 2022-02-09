@@ -89,7 +89,7 @@
           </p>
           <div class="row">
             <div class="col" *ngFor="let _Data of _GifImageArray">
-              <a [href]="AssetsUrl+_Data.ImageUrl" download>
+              <a href="" [download]="AssetsUrl+_Data.ImageUrl">
                 <img class="img-fluid w-25" [src]="AssetsUrl+_Data.ImageUrl" alt="">
               </a>
             </div>
