@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('picture') Picture: ElementRef | any;
   @ViewChild('background') Background: ElementRef | any;
   @ViewChildren('MusicResolve') MusicResolve?: QueryList<ElementRef>;
+  @ViewChildren('VideoResolve') VideoResolve?: QueryList<ElementRef>;
   
   AssetsUrl = _AssetsUrl;
 
@@ -296,8 +297,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   StopMusic(){
     this.MusicResolve?.forEach((_Elements:ElementRef) => {
         _Elements.nativeElement.pause();
-      _Elements.nativeElement.currentTime = 0;
+        _Elements.nativeElement.currentTime = 0;
     });
+  }
+
+  StopVideo(){
+    this.VideoResolve?.forEach((_Elements:ElementRef) => {
+      _Elements.nativeElement.pause();
+      _Elements.nativeElement.currentTime = 0;
+    })
   }
 
   ngOnDestroy(): void {
