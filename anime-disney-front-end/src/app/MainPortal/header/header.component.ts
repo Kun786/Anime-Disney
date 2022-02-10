@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { PublicService } from 'src/app/SharedPortal/Services/public.service';
@@ -17,7 +17,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('video') Video: ElementRef | any;
   @ViewChild('picture') Picture: ElementRef | any;
   @ViewChild('background') Background: ElementRef | any;
-  @ViewChild('MusicResolve') MusicResolve: ElementRef | any;
+  @ViewChildren('MusicResolve') MusicResolve?: QueryList<ElementRef>;
+  
   AssetsUrl = _AssetsUrl;
 
   //Class Properties
@@ -74,7 +75,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.FetchPublicVideo();
     this.FetchPublicPicture();
     this.FetchPublicBackground();
-    console.log(this.MusicResolve);
   }
 
 
@@ -294,9 +294,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   StopMusic(){
-    console.log(this.MusicResolve);
-    this.MusicResolve.nativeElement.pause();
-    this.MusicResolve.nativeElement.currentTime = 0;
+    this.MusicResolve?.forEach((_Elements:ElementRef) => {
+        _Elements.nativeElement.pause();
+      _Elements.nativeElement.currentTime = 0;
+    });
   }
 
   ngOnDestroy(): void {
