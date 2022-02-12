@@ -10,11 +10,6 @@ const path = require('path');
 const morgan = require('morgan');
 //Block End for Dependencies
 
-
-
-//Global Constant
-const PORT = 5080;
-
 //Block Start Initialize the APP
 const app = express();
 app.use(morgan('dev'));
@@ -24,6 +19,22 @@ app.use(express.text());
 app.use(express.raw());
 app.use(cors());
 //Block End Initialize the APP
+
+//Global Constant
+const PORT = 5080;
+
+//Socket.Io Initializer
+const http = require('http').createServer(app);
+const io = require('socket.io')(http,{
+    cors:{
+        origin:'*' //Access request from all origin
+    }
+})
+
+io.on('connection',(socket) => { //In argument you can pass the basic information from client
+    
+})
+
 
 //Start Blcok Setting the Headers for you Application
 app.all('*', (req, res, next) => {
@@ -91,6 +102,8 @@ app.use((error,req,res,next)=>{
 app.listen(PORT,()=>{
     console.log(`Server is running in mode on port ${PORT}`);
 });
+
+
 
 // cron.schedule('*/3 * * * * *', function() {
 //     request('/UserManagement/UserRegister', function(error, response, body) {
