@@ -102,7 +102,6 @@ app.use((error,req,res,next)=>{
 //Starting the app
 app.listen(PORT,()=>{
     console.log(`Server is running in mode on port ${PORT}`);
-    console.log(process.env);
 });
 
 
