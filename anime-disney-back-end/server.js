@@ -25,15 +25,15 @@ app.use(cors());
 const PORT = 5080;
 
 //Socket.Io Initializer
-const http = require('http').createServer(app);
-const io = require('socket.io')(http,{
+const http = require('http').createServer(app); 
+const io = require('socket.io')(http,{ 
     cors:{
         origin:'*' //Access request from all origin
     }
 })
 
 io.on('connection',(socket) => { //In argument you can pass the basic information from client
-    
+    console.log('connected'.socket);
 })
 
 
@@ -102,6 +102,7 @@ app.use((error,req,res,next)=>{
 //Starting the app
 app.listen(PORT,()=>{
     console.log(`Server is running in mode on port ${PORT}`);
+    console.log(process.env);
 });
 
 
@@ -113,6 +114,9 @@ app.listen(PORT,()=>{
 //         console.log(error);
 //     })
 //   });
+
+
+
 
 
 
