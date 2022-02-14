@@ -9,6 +9,8 @@ const cors = require('cors');
 const path = require('path');
 const morgan = require('morgan');
 const mongoose = require("mongoose");
+const socketio = require('socket.io');
+const http = require('http');
 //Block End for Dependencies
 
 //Block Start Initialize the APP
@@ -25,16 +27,12 @@ app.use(cors());
 const PORT = 5080;
 
 //Socket.Io Initializer
-const http = require('http').createServer(app); 
-const io = require('socket.io')(http,{ 
+const server = http.createServer(app); 
+const io = socketio(server,{
     cors:{
-        origin:'*' //Access request from all origin
+        origin:'*'
     }
-})
-
-io.on('connection',(socket) => { //In argument you can pass the basic information from client
-    console.log('connected'.socket);
-})
+});
 
 
 //Start Blcok Setting the Headers for you Application
@@ -98,13 +96,16 @@ app.use((error,req,res,next)=>{
 
 
 
-
 //Starting the app
-app.listen(PORT,()=>{
+server.listen(PORT,()=>{
     console.log(`Server is running in mode on port ${PORT}`);
 });
 
 
+//Run when client connect
+io.on('connection', (socket) => {
+    console.log('Connection has Made');
+})
 
 // cron.schedule('*/3 * * * * *', function() {
 //     request('/UserManagement/UserRegister', function(error, response, body) {
