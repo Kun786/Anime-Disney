@@ -11,6 +11,7 @@ import { UserLoginComponent } from './ManagementPortal/UserManagement/user-login
 import { UserRegisterComponent } from './ManagementPortal/UserManagement/user-register/user-register.component';
 import { AboutComponent } from './MainPortal/about/about.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DefaultModule } from './adminPortal/default/default.module';
 
 @NgModule({
   declarations: [
@@ -20,14 +21,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     UserLoginComponent,
     UserRegisterComponent,
-    AboutComponent
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DefaultModule
   ],
   providers: [],
   bootstrap: [AppComponent]
