@@ -12,6 +12,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     // this._ChatService.SendMessage('Message Coming From Client');
+    this._ChatService.GetMessage().subscribe((MessageComingFromBackend:any) => {
+      console.log('Message Coming From Backend', MessageComingFromBackend);
+    });
+
+    this._ChatService.SendMessage('Hi How are You');
   }
 
 }

@@ -103,8 +103,12 @@ server.listen(PORT,()=>{
 
 
 //Run when client connect
-io.on('connection', (socket) => {
+io.on('Connection', (socket) => {
     console.log('Connection has Made');
+
+    socket.on('OnClientMessage',(Message) => {
+        io.emit('OnServerMessage',Message);
+    })
 })
 
 // cron.schedule('*/3 * * * * *', function() {

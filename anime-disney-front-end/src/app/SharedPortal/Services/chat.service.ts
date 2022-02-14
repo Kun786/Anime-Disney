@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { observable, Observable } from 'rxjs';
 import socket  from 'socket.io-client';
 import { _BaseUrl } from 'src/configuration/GlobalConstants';
 
@@ -14,6 +15,14 @@ export class ChatService {
   }
 
   SendMessage(_Payload:any){
-    this.socket.emit('connection',_Payload);
+    this.socket.emit('OnClientMessage',_Payload);
+  }
+
+  GetMessage() {
+    return new Observable((observable) => {
+      this.socket.on('OnServerMessage', (Message:any) => {
+        observable.next(Message);
+      })
+    })
   }
 }
