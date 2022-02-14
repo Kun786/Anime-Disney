@@ -114,6 +114,7 @@ io.on('connection', (socket) => {
         console.log(Message);
         io.emit('OnServerMessage',Message);
         //Yahan Database Call karo jahan message ko array main pus karo
+        //Yahan Check Lagaoo k Agar to user login hai to wo Databse main uss ka 
     })
 })
 
