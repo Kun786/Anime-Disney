@@ -104,11 +104,16 @@ server.listen(PORT,()=>{
 
 //Run when client connect
 io.on('connection', (socket) => {
+    //Not connection is the key that you needed to create a connection b/w
+    //client and the server
+    // Scoket is an Object allows us to join specific chat rooms and also
+    // to catch and emit the events
     console.log('Connection has Made');
 
     socket.on('OnClientMessage',(Message) => {
         console.log(Message);
         io.emit('OnServerMessage',Message);
+        //Yahan Database Call karo jahan message ko array main pus karo
     })
 })
 
