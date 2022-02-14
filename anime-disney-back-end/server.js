@@ -11,6 +11,7 @@ const morgan = require('morgan');
 const mongoose = require("mongoose");
 const socketio = require('socket.io');
 const http = require('http');
+const _PublicChatModel = require('./models/PublicChatModel');
 //Block End for Dependencies
 
 //Block Start Initialize the APP
@@ -59,6 +60,7 @@ app.use(express.static(path.join(__dirname,'/frontEnd')));
 //LoadingRoutes in Variable
 const _UserManagementRoute = require('./routes/UserManagementRoute');
 const _PublicManagementRoute = require('./routes/PublicManagementRoute');
+const res = require('express/lib/response');
 //LoadingRoutes in Variable
 
 //UsingRoutes
@@ -110,9 +112,15 @@ io.on('connection', (socket) => {
     // to catch and emit the events
     console.log('Connection has Made');
 
-    socket.on('OnClientMessage',(Message) => {
-        console.log(Message);
+    socket.on('OnClientMessage',async (Message) => {
+            const _ChatToSave = new _PublicChatModel({
+                Message:Message
+            });
+            const _SaveChatToDatabase = await _ChatToSave.save();
+            console.log(_SaveChatToDatabase);
         io.emit('OnServerMessage',Message);
+        const _GetPublicChat = await _PublicChatModel.find().lean();
+        console.log(_GetPublicChat);
         //Yahan Database Call karo jahan message ko array main pus karo
         //Yahan Check Lagaoo k Agar to user login hai to wo Databse main uss ka 
     })
