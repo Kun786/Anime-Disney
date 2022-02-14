@@ -9,14 +9,20 @@ import { ChatService } from 'src/app/SharedPortal/Services/chat.service';
 export class HomeComponent implements OnInit {
 
   constructor(private _ChatService:ChatService) {}
-
+  Message:any;
   ngOnInit(): void {
     // this._ChatService.SendMessage('Message Coming From Client');
     this._ChatService.GetMessage().subscribe((MessageComingFromBackend:any) => {
       console.log('Message Coming From Backend', MessageComingFromBackend);
+      this.Message = MessageComingFromBackend;
     });
 
-    this._ChatService.SendMessage('Hi How are You');
+  }
+
+  SendMessage(){
+    this._ChatService.SendMessage('Hi Man How are you');
   }
 
 }
+
+    

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { observable, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import socket  from 'socket.io-client';
 import { _BaseUrl } from 'src/configuration/GlobalConstants';
 

@@ -103,21 +103,14 @@ server.listen(PORT,()=>{
 
 
 //Run when client connect
-io.on('Connection', (socket) => {
+io.on('connection', (socket) => {
     console.log('Connection has Made');
 
     socket.on('OnClientMessage',(Message) => {
+        console.log(Message);
         io.emit('OnServerMessage',Message);
     })
 })
-
-// cron.schedule('*/3 * * * * *', function() {
-//     request('/UserManagement/UserRegister', function(error, response, body) {
-//         console.log(response);
-//         console.log(body);
-//         console.log(error);
-//     })
-//   });
 
 
 

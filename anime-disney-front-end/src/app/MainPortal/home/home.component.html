@@ -79,7 +79,7 @@
                             <img src="https://www.animedisney.com/logo.png" class="img-fluid rounded">
                         </div>
                         <div class="col-lg-11 col-md-11 col-sm-11">
-                            <div class="alert">Alerts are available for any length of text, as well as an optional close button.Alerts are available for any length of text, as well as an optional close button.</div>
+                            <div class="alert">{{Message}}</div>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                    <textarea rows="3" placeholder="Message" class="w-100"></textarea>
                </div>
                <div class="col-lg-2 col-md-2 col-sm-12">
-                   <button>Send</button><br>
+                   <button (click)="SendMessage()">Send</button><br>
                    <button class="midButton">Emoji</button><br>
                    <button>Music</button>
                </div>
