@@ -121,7 +121,7 @@ io.on('connection', (socket) => {
         io.emit('OnServerMessage',Message);
         const _GetPublicChat = await _PublicChatModel.find().lean();
         console.log(_GetPublicChat);
-        //Yahan Database Call karo jahan message ko array main pus karo
+        //Yahan Database Call karo jahan message ko array main push karo
         //Yahan Check Lagaoo k Agar to user login hai to wo Databse main uss ka 
     })
 })
