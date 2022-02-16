@@ -5,6 +5,7 @@ const _PublicGifModel = require('../models/PublicGifModel');
 const _PublicMusicModel = require('../models/PublicMusicModel');
 const _PublicPictureModel = require('../models/PublicPictureModel');
 const _PublicVideoModel = require('../models/PublicVideoModel');
+const _PublicChatModel = require('./models/PublicChatModel');
 const fs = require('fs');
 
 //Start Block Change Logo
@@ -291,7 +292,24 @@ const GetPublicBackground = async (req, res) => {
 }
 //End Block To Get Public Logo
 
-//Chat
+//Start Block Get All Public Chat
+const GetAllPublicChat = async (req, res) => {
+    try {
+        const _GetAllPublicChat = await _PublicChatModel.find().lean();
+        res.json({
+            Message:'Public Chat Found Successfuly',
+            Data:true,
+            Result:_GetAllPublicChat
+        })
+    } catch (error) {
+        res.json({
+            Message:error.message,
+            Data:false,
+            Result:null
+        })
+    }
+}
+//End Get All Public Chat
 //People are guest aur un ke profile picture jo top left pay hoo ge wo he hoo ge baki register walon ke alog hoo ga
 
 module.exports = {
@@ -307,5 +325,6 @@ module.exports = {
     GetPublicMusic,
     GetPublicVideo,
     GetPublicPicture,
-    GetPublicBackground
+    GetPublicBackground,
+    GetAllPublicChat
 };
