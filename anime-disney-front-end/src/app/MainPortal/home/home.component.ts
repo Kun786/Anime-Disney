@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
       this.Message = MessageComingFromBackend;
     });
 
+    
   }
 
   SendMessage(){

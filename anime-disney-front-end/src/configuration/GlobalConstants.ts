@@ -15,4 +15,5 @@ export const GetPublicMusicUrl = _BaseUrl+'/PublicManagement/GetPublicMusic';
 export const GetPublicPictureUrl = _BaseUrl+'/PublicManagement/GetPublicPicture';
 export const GetPublicVideoUrl = _BaseUrl+'/PublicManagement/GetPublicVideo';
 export const GetPublicBackgroundUrl = _BaseUrl+'/PublicManagement/GetPublicBackground';
+export const GetPublicChatUrl = _BaseUrl+'/PublicManagement/GetPublicChat';
 //Public Profile Api's
