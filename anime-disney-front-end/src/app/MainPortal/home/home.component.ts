@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private _ChatService:ChatService) {}
   Message:any;
+  _PublicChatArray:any = [];
   ngOnInit(): void {
     // this._ChatService.SendMessage('Message Coming From Client');
     this._ChatService.GetMessage().subscribe((MessageComingFromBackend:any) => {
@@ -17,8 +18,8 @@ export class HomeComponent implements OnInit {
       this.Message = MessageComingFromBackend;
     });
 
-    this._ChatService.GetAllPublicChat().subscribe((DataComingFromBackend) => {
-      console.log(DataComingFromBackend);
+    this._ChatService.GetAllPublicChat().subscribe((DataComingFromBackend:any) => {
+      this._PublicChatArray = DataComingFromBackend.Result;
     })
   }
 

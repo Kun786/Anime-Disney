@@ -26,60 +26,12 @@
         <div class="scroll container-fluid">
             <div class="row">
                 <div class="col-8">
-                    <div class="row">
+                    <div class="row" *ngFor="let _Data of _PublicChatArray">
                         <div class="col-lg-1 col-md-1 col-sm-1">
-                            <img src="https://www.animedisney.com/logo.png" class="img-fluid rounded">
-                        </div>
+                            <img src="https://www.animedisney.com/logo.png" class="img-fluid rounded"> <span class="text-white">&nbsp;{{_Data.UserName}}</span>
+                        </div><br>
                         <div class="col-lg-11 col-md-11 col-sm-11">
-                            <div class="alert">Alerts are available for any length of text, as well as an optional close button.Alerts are available for any length of text, as well as an optional close button.</div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-1 col-md-1 col-sm-1">
-                            <img src="https://www.animedisney.com/logo.png" class="img-fluid rounded">
-                        </div>
-                        <div class="col-lg-11 col-md-11 col-sm-11">
-                            <div class="alert">Alerts are available for any length of text, as well as an optional close button.Alerts are available for any length of text, as well as an optional close button.</div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-1 col-md-1 col-sm-1">
-                            <img src="https://www.animedisney.com/logo.png" class="img-fluid rounded">
-                        </div>
-                        <div class="col-lg-11 col-md-11 col-sm-11">
-                            <div class="alert">Alerts are available for any length of text, as well as an optional close button.Alerts are available for any length of text, as well as an optional close button.</div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-1 col-md-1 col-sm-1">
-                            <img src="https://www.animedisney.com/logo.png" class="img-fluid rounded">
-                        </div>
-                        <div class="col-lg-11 col-md-11 col-sm-11">
-                            <div class="alert">Alerts are available for any length of text, as well as an optional close button.Alerts are available for any length of text, as well as an optional close button.</div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-1 col-md-1 col-sm-1">
-                            <img src="https://www.animedisney.com/logo.png" class="img-fluid rounded">
-                        </div>
-                        <div class="col-lg-11 col-md-11 col-sm-11">
-                            <div class="alert">Alerts are available for any length of text, as well as an optional close button.Alerts are available for any length of text, as well as an optional close button.</div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-1 col-md-1 col-sm-1">
-                            <img src="https://www.animedisney.com/logo.png" class="img-fluid rounded">
-                        </div>
-                        <div class="col-lg-11 col-md-11 col-sm-11">
-                            <div class="alert">Alerts are available for any length of text, as well as an optional close button.Alerts are available for any length of text, as well as an optional close button.</div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-1 col-md-1 col-sm-1">
-                            <img src="https://www.animedisney.com/logo.png" class="img-fluid rounded">
-                        </div>
-                        <div class="col-lg-11 col-md-11 col-sm-11">
-                            <div class="alert">{{Message}}</div>
+                            <div class="alert">{{_Data.Message}}</div>
                         </div>
                     </div>
                 </div>
