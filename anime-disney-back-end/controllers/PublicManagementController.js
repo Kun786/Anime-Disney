@@ -5,7 +5,7 @@ const _PublicGifModel = require('../models/PublicGifModel');
 const _PublicMusicModel = require('../models/PublicMusicModel');
 const _PublicPictureModel = require('../models/PublicPictureModel');
 const _PublicVideoModel = require('../models/PublicVideoModel');
-const _PublicChatModel = require('./models/PublicChatModel');
+const _PublicChatModel = require('../models/PublicChatModel');
 const fs = require('fs');
 
 //Start Block Change Logo
@@ -296,6 +296,7 @@ const GetPublicBackground = async (req, res) => {
 const GetAllPublicChat = async (req, res) => {
     try {
         const _GetAllPublicChat = await _PublicChatModel.find().lean();
+        console.log(_GetAllPublicChat);
         res.json({
             Message:'Public Chat Found Successfuly',
             Data:true,

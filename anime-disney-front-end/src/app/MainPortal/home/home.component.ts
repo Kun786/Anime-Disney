@@ -17,7 +17,9 @@ export class HomeComponent implements OnInit {
       this.Message = MessageComingFromBackend;
     });
 
-    
+    this._ChatService.GetAllPublicChat().subscribe((DataComingFromBackend) => {
+      console.log(DataComingFromBackend);
+    })
   }
 
   SendMessage(){

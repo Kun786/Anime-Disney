@@ -1,14 +1,18 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import socket  from 'socket.io-client';
-import { _BaseUrl } from 'src/configuration/GlobalConstants';
+import { 
+  _BaseUrl,
+  GetPublicChatUrl
+ } from 'src/configuration/GlobalConstants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
   socket:any;
-  constructor() { this.InitializeSocket() }
+  constructor(private _HttpClient:HttpClient) { this.InitializeSocket() }
 
   InitializeSocket(){
     this.socket = socket(_BaseUrl);
@@ -24,5 +28,9 @@ export class ChatService {
         observable.next(Message);
       })
     })
+  }
+
+  GetAllPublicChat() {
+    return this._HttpClient.get(GetPublicChatUrl);
   }
 }
