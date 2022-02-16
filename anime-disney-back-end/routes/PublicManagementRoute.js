@@ -15,7 +15,8 @@ const {
     GetPublicMusic,
     GetPublicVideo,
     GetPublicPicture,
-    GetPublicBackground 
+    GetPublicBackground,
+    GetAllPublicChat 
 } = require('../controllers/PublicManagementController');
 const { UploadPublicLogo } = require('../libraryfiles/UploadPublicLogo');
 const { UploadPublicGif } = require('../libraryfiles/UploadPublicGif');
@@ -37,4 +38,5 @@ Router.get('/GetPublicMusic',GetPublicMusic);
 Router.get('/GetPublicVideo',GetPublicVideo);
 Router.get('/GetPublicPicture',GetPublicPicture);
 Router.get('/GetPublicBackground',GetPublicBackground);
+Router.get('/GetPublicChat',GetAllPublicChat);
 module.exports = Router;
