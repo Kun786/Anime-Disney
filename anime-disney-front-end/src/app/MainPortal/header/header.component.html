@@ -95,7 +95,7 @@
             </div>
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
-            <input #gif type="file" name="uploadfile" id="img" style="display:none;" (change)="GetGif($event)" />
+            <input #gif type="file" name="uploadfile" id="img" style="display:none;" (change)="GetGif($event)"/>
             <label for="img">Select Image</label>&nbsp;{{_ImageName}}
           </button>
         </div>
@@ -120,9 +120,11 @@
           </p>
           <div class="row">
             <div class="col-lg-2 col-md-3 col-sm-12" *ngFor="let _Data of _MusicArray">
-              <audio controls #MusicResolve>
-                <source [src]="AssetsUrl+_Data.MusicUrl" type="audio/ogg">
-              </audio>
+              <a [href]="AssetsUrl+_Data.MusicUrl" download target="_blank">
+                <audio controls #MusicResolve>
+                  <source [src]="AssetsUrl+_Data.MusicUrl" type="audio/ogg">
+                </audio>
+              </a>
             </div>
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
@@ -151,9 +153,11 @@
           </p>
           <div class="row">
             <div class="col-lg-2 col-md-2 col-sm-12" *ngFor="let _Data of _VideoArray">
-              <video width="100%" height="240" controls>
-                <source [src]="AssetsUrl+_Data.VideoUrl" type="video/mp4">
-              </video>
+              <a [href]="AssetsUrl+_Data.VideoUrl" download target="_blank">
+                <video width="100%" height="240" controls>
+                  <source [src]="AssetsUrl+_Data.VideoUrl" type="video/mp4">
+                </video>
+              </a>
             </div>
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
@@ -182,7 +186,9 @@
           </p>
           <div class="row">
             <div class="col-lg-2 col-md-2 col-sm-12" *ngFor="let _Data of _PictureImageArray">
-              <img class="img-fluid w-100" [src]="AssetsUrl+_Data.ImageUrl" alt="">
+              <a [href]="AssetsUrl+_Data.ImageUrl" download target="_blank">
+                <img class="img-fluid w-100" [src]="AssetsUrl+_Data.ImageUrl" alt="">
+              </a>
             </div>
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
@@ -212,15 +218,19 @@
           <h6 class="text-center text-white">Pictures</h6>
           <div class="row">
             <div class="col" *ngFor="let _Data of _BackgroundImageArray">
-              <img class="img-fluid w-25" [src]="AssetsUrl+_Data.MediaUrl" alt="">
+              <a [href]="AssetsUrl+_Data.MediaUrl" download target="_blank">
+                <img class="img-fluid w-25" [src]="AssetsUrl+_Data.MediaUrl" alt="">
+              </a>
             </div>
           </div>
           <h6 class="text-center text-white">Videos</h6>
           <div class="row">
             <div class="col" *ngFor="let _Data of _BackgroundVideoArray">
-              <video width="320" height="240" controls #VideoResolve>
-                <source [src]="AssetsUrl+_Data.MediaUrl" type="video/mp4">
-              </video>
+              <a [href]="AssetsUrl+_Data.MediaUrl" download target="_blank">
+                <video width="320" height="240" controls #VideoResolve>
+                  <source [src]="AssetsUrl+_Data.MediaUrl" type="video/mp4">
+                </video>
+              </a>
             </div>
           </div>
           <button type="button" class="btn btn-secondary me-auto d-flex justify-content-center">
