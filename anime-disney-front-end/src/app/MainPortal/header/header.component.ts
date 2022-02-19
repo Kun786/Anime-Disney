@@ -21,8 +21,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChildren('MusicResolve') MusicResolve?: QueryList<ElementRef>;
   @ViewChildren('VideoResolve') VideoResolve?: QueryList<ElementRef>;
 
-  AssetsUrl:any;
-  SafeUrl:any;
+  AssetsUrl = _AssetsUrl;
 
   //Class Properties
   _ShowAlternateImage = false;
@@ -80,8 +79,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.FetchPublicVideo();
     this.FetchPublicPicture();
     this.FetchPublicBackground();
-    this.SafeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(_AssetsUrl);
-    this.AssetsUrl = this.SafeUrl.changingThisBreaksApplicationSecurity;
+  }
+
+  Transform(Url: any) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(Url);
   }
 
   InitializeLogoForm() {
