@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { PublicService } from 'src/app/SharedPortal/Services/public.service';
 import { _AssetsUrl } from 'src/configuration/GlobalConstants';
@@ -19,8 +20,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('background') Background: ElementRef | any;
   @ViewChildren('MusicResolve') MusicResolve?: QueryList<ElementRef>;
   @ViewChildren('VideoResolve') VideoResolve?: QueryList<ElementRef>;
-  
-  AssetsUrl = _AssetsUrl;
+
+  AssetsUrl:any;
+  SafeUrl:any;
 
   //Class Properties
   _ShowAlternateImage = false;
@@ -60,7 +62,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   __PostBackgroundSubscription?: Subscription;
   __GetBackgroundSubscription?: Subscription;
 
-  constructor(private _FormBuilder: FormBuilder, private _PublicService: PublicService) {
+  constructor(private _FormBuilder: FormBuilder, private _PublicService: PublicService,
+    private sanitizer:DomSanitizer
+    ) {
     this.InitializeLogoForm(),
       this.InitializeGifForm(),
       this.InitializeMusicForm(),
@@ -76,8 +80,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.FetchPublicVideo();
     this.FetchPublicPicture();
     this.FetchPublicBackground();
+    this.SafeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(_AssetsUrl);
+    this.AssetsUrl = this.SafeUrl.changingThisBreaksApplicationSecurity;
   }
-
 
   InitializeLogoForm() {
     this.LogoForm = this._FormBuilder.group({
@@ -294,15 +299,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
-  StopMusic(){
-    this.MusicResolve?.forEach((_Elements:ElementRef) => {
-        _Elements.nativeElement.pause();
-        _Elements.nativeElement.currentTime = 0;
+  StopMusic() {
+    this.MusicResolve?.forEach((_Elements: ElementRef) => {
+      _Elements.nativeElement.pause();
+      _Elements.nativeElement.currentTime = 0;
     });
   }
 
-  StopVideo(){
-    this.VideoResolve?.forEach((_Elements:ElementRef) => {
+  StopVideo() {
+    this.VideoResolve?.forEach((_Elements: ElementRef) => {
       _Elements.nativeElement.pause();
       _Elements.nativeElement.currentTime = 0;
     })
