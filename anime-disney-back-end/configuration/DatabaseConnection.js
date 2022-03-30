@@ -22,18 +22,18 @@ const Package = require('../package.json');
 const mongoose = require('mongoose');
 const _EnviormentalVariables = require('./EnviormentalVariables');
 
-const DatabaseName = 'AnimeDisney';
-process.env.DATABASE_URI
-mongoose.connect('mongodb+srv://mistxsnow:mistxsnow@mistxsnow.itlya.mongodb.net/animeDisney?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }, (error,connection) => {
-    if (!error) {
-        console.log(`\nMogoDb Connected Successfuly at 27017 with Database Name ${DatabaseName}\n`);
-        console.log("Your App Has the Following Dependicies\n");
-        for (dependencies in Package.dependencies) {
-            console.log(dependencies);
-        }
-    }
-    else { console.log('Error: Not Connected to the MongoDb' + error) }
-});
+// const DatabaseName = 'AnimeDisney';
+// process.env.DATABASE_URI
+// mongoose.connect('mongodb+srv://mistxsnow:mistxsnow@mistxsnow.itlya.mongodb.net/animeDisney?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }, (error,connection) => {
+//     if (!error) {
+//         console.log(`\nMogoDb Connected Successfuly at 27017 with Database Name ${DatabaseName}\n`);
+//         console.log("Your App Has the Following Dependicies\n");
+//         for (dependencies in Package.dependencies) {
+//             console.log(dependencies);
+//         }
+//     }
+//     else { console.log('Error: Not Connected to the MongoDb' + error) }
+// });
 
 
 // Block End Connecting To DB (Main)
@@ -52,3 +52,13 @@ mongoose.connect('mongodb+srv://mistxsnow:mistxsnow@mistxsnow.itlya.mongodb.net/
 
 
 
+mongoose.connect("mongodb://localhost:27017/AnimeDisney", {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+  }, (err,res)=>{
+      if(res){
+          console.log(`MogoDb Connected Successfuly at 27017 with AnimeDisney Database`);
+      }if(err){
+          console.log("database is not connected")
+      }
+  });

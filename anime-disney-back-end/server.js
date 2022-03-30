@@ -61,12 +61,14 @@ app.use(express.static(path.join(__dirname,'/frontEnd')));
 const _UserManagementRoute = require('./routes/UserManagementRoute');
 const _PublicManagementRoute = require('./routes/PublicManagementRoute');
 const _StripePaymentManagementRoute = require('./routes/StripeManagementRoute');
+const _AdminManagementRoute = require('./routes/AdminManagmentRouter')
 //LoadingRoutes in Variable
 
 //UsingRoutes
 app.use('/UserManagement',_UserManagementRoute);
 app.use('/PublicManagement',_PublicManagementRoute);
 app.use('/StripePaymentManagement',_StripePaymentManagementRoute);
+app.use('/AdminManagement',_AdminManagementRoute);
 //UsingRoutes
 
 //End Block Load Routes
