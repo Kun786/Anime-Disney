@@ -8,11 +8,10 @@ const UserSchema = mongoose.Schema({
     DOB: { type: String, required: true },
     Age: { type: String, required: true },
     Gender: { type: String, required: true },
-    Star: { type: String, required: true },
+    Star: { type: String, default:'' },
     Zodiac: { type: String, required: true },
     Planet: { type: String, required: true },
-    Password: { type: String, required: true },
-    RepeatPassword: { type: String}
+    Password: { type: String, required: true }
 })
 
 UserSchema.pre('save', function(next){

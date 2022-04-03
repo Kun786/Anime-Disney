@@ -4,43 +4,41 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 const UserRegister = async (req, res) => {
- 
-
-
+ console.log(req.body);
   try {
     const UserExists = await _UserCluster.findOne({ Email: req.body.Email });
     if (UserExists) {
       return res.json("User Already Exist this Email");
     } else {
-      const { Name, Email, DOB, Gender, Password, Zodiac, Age, Planet, RepeatPassword, Star} = req.body;
+      const { name, email, birthday, gender, password, zodiac, age, planet, star} = req.body;
       const _RegisterUserToSave = new _UserCluster({
-        Name: Name,
-        Email: Email,
-        DOB: DOB,
-        Gender: Gender,
-        Age : Age,
-        Zodiac: Zodiac,
-        Star: Star,
-        Planet: Planet,
-        Password: Password,
-        RepeatPassword: RepeatPassword,
+        Name: name,
+        Email: email,
+        DOB: birthday,
+        Gender: gender,
+        Age : age,
+        Zodiac: zodiac,
+        Star: star,
+        Planet: planet,
+        Password: password
       });
       const _UserData = await _RegisterUserToSave.save();
       res.json({
         Message: "User Register Successfully",
-        Result: true,
+        status: true,
         Data: _UserData,
       });
     }
   } catch (error) {
-    res.json({ Message: error.message, Result: false });
+    res.json({ Message: error.message, status: false });
   }
 };
 
 const UserLogin = async (req, res) => {
   try {
-    _UserEmail = req.body.Email;
-    _Password = req.body.Password;
+    console.log(req.body)
+    _UserEmail = req.body.email;
+    _Password = req.body.password;
     console.log(req.body);
 
     const _UserToAuthenticate = await _UserCluster.findOne({
@@ -50,7 +48,7 @@ const UserLogin = async (req, res) => {
     if (_UserToAuthenticate === null) {
       return res.json({
         Message: "Authentication Failed Either Incorrect Password or UserName",
-        Data: null,
+        status: false,
       });
     }
     console.log(_UserToAuthenticate._Password);
@@ -63,7 +61,7 @@ const UserLogin = async (req, res) => {
       return res.json({
         Message: "Authentication Failed Either Incorrect Password or UserName",
         Data: "Not Found " + _Result,
-        Result: null,
+        status: false,
       });
     }
 
