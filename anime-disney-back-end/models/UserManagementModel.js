@@ -6,9 +6,13 @@ const UserSchema = mongoose.Schema({
     Name: { type: String, required: true},
     Email: { type: String, required: true},
     DOB: { type: String, required: true },
+    Age: { type: String, required: true },
     Gender: { type: String, required: true },
+    Star: { type: String, required: true },
+    Zodiac: { type: String, required: true },
+    Planet: { type: String, required: true },
     Password: { type: String, required: true },
-    PassCode: { type: String}
+    RepeatPassword: { type: String}
 })
 
 UserSchema.pre('save', function(next){
