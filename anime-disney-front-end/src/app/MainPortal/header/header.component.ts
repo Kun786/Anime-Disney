@@ -45,6 +45,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   _PictureImageArray: any = [];
   _BackgroundImageArray: any = [];
   _BackgroundVideoArray: any = [];
+  userName :any;
 
 
   //Subscription
@@ -79,6 +80,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.FetchPublicVideo();
     this.FetchPublicPicture();
     this.FetchPublicBackground();
+    this.userName = localStorage.getItem('userName');
   }
 
   Transform(Url: any) {

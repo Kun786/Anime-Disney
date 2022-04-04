@@ -4,19 +4,19 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 const UserRegister = async (req, res) => {
- console.log(req.body);
+  console.log(req.body);
   try {
     const UserExists = await _UserCluster.findOne({ Email: req.body.Email });
     if (UserExists) {
       return res.json("User Already Exist this Email");
     } else {
-      const { name, email, birthday, gender, password, zodiac, age, planet, star} = req.body;
+      const { name, email, birthday, gender, password, zodiac, age, planet, star } = req.body;
       const _RegisterUserToSave = new _UserCluster({
         Name: name,
         Email: email,
         DOB: birthday,
         Gender: gender,
-        Age : age,
+        Age: age,
         Zodiac: zodiac,
         Star: star,
         Planet: planet,
@@ -36,57 +36,67 @@ const UserRegister = async (req, res) => {
 
 const UserLogin = async (req, res) => {
   try {
-    console.log(req.body)
-    _UserEmail = req.body.email;
-    _Password = req.body.password;
-    console.log(req.body);
-
-    const _UserToAuthenticate = await _UserCluster.findOne({
-      Email: _UserEmail,
-    });
+    email = req.body.email;
+    password = req.body.password;
+    const _UserToAuthenticate = await _UserCluster.findOne({ Email: email });
 
     if (_UserToAuthenticate === null) {
       return res.json({
-        Message: "Authentication Failed Either Incorrect Password or UserName",
-        status: false,
-      });
+        Message: 'Authentication Failed Either Incorrect Email or Password',
+        Data: null,
+        status: false
+      })
     }
-    console.log(_UserToAuthenticate._Password);
-    const _Result = await bcrypt.compare(
-      _Password,
-      _UserToAuthenticate.Password
-    );
-    console.log(_Result);
+
+    const _Result = await bcrypt.compare(password, _UserToAuthenticate.Password);
     if (!_Result) {
       return res.json({
-        Message: "Authentication Failed Either Incorrect Password or UserName",
-        Data: "Not Found " + _Result,
-        status: false,
-      });
+        Message: 'Authentication Failed Either Incorrect Email or Password',
+        Data: 'Not Found ' + _Result,
+        Result: null,
+        status: false
+      })
     }
 
     const _Token = jwt.sign(
       {
-        Email: _UserToAuthenticate.Email,
-        UserId: _UserToAuthenticate._id,
+        email: _UserToAuthenticate.Email,
+        UserId: _UserToAuthenticate._id
       },
-      "UserLogin",
-      { expiresIn: "1h" }
-    );
+      'UserLogin',
+      { expiresIn: '1h' }
+    )
 
     return res.json({
-      Message: "Authentication SuccessFull",
+      Message: 'Authentication SuccessFull',
       Data: _Result,
       Token: _Token,
       User: _UserToAuthenticate,
-    });
+      status: true
+    })
+
+
+
   } catch (error) {
     console.log(error.message);
     res.json({
-      Error: error.message,
-      Data: null,
-    });
+      Message: error.message,
+      Data: null
+    })
+  }
+}
+const getAllUsers = async (req, res) => {
+  try {
+    let getAllUsers = await _UserCluster.find().lean();
+    res.json({
+      status: true,
+      Result: getAllUsers
+    })
+  } catch (error) {
+    res.json({
+      status: false,
+      Message: error.message
+    })
   }
 };
-
-module.exports = { UserLogin, UserRegister };
+module.exports = { UserLogin, UserRegister, getAllUsers };

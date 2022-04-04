@@ -15,7 +15,7 @@
             Guest:<br>
             0<br>
             Registered<br>
-            0<br>
+            {{ countRegisterUser }}<br>
             Online<br>
             0
         </div>
@@ -60,7 +60,7 @@
     <h3 class="text-white text-center">Angel</h3>
     <div class="row right">
         <div class="col">
-
+            <span class="text-light" *ngFor="let user of allUsers">{{ user.Name }}</span>
         </div>
     </div>
     <h3 class="text-white text-center">Roleplay</h3>

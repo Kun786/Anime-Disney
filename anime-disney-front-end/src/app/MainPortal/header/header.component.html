@@ -38,8 +38,9 @@
       </ul>
       <div class="left d-flex mx-lg-5 text-white">
         <div class="row">
-          <div class="col-lg-12" [routerLink]="['/login']">Login</div>
-          <div class="col-lg-12" [routerLink]="['/register']">Register</div>
+          <div class="col-lg-12" *ngIf="userName === ''"  [routerLink]="['/login']">Login</div>
+          <div class="col-lg-12" *ngIf="userName === ''" [routerLink]="['/register']">Register</div>
+          <div class="col-lg-12" *ngIf="userName !== ''" ><h3>{{userName}}</h3></div>
         </div>
       </div>
     </div>
