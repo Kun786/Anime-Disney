@@ -10,17 +10,19 @@ const UserRegister = async (req, res) => {
     if (UserExists) {
       return res.json("User Already Exist this Email");
     } else {
-      const { name, email, birthday, gender, password, zodiac, age, planet, star } = req.body;
+      const { Name, Email, DOB, Gender, Password, Zodiac, Age, Planet, Star, RepeatPassword, Status } = req.body;
       const _RegisterUserToSave = new _UserCluster({
-        Name: name,
-        Email: email,
-        DOB: birthday,
-        Gender: gender,
-        Age: age,
-        Zodiac: zodiac,
-        Star: star,
-        Planet: planet,
-        Password: password
+        Name: Name,
+        Email: Email,
+        DOB: DOB,
+        Gender: Gender,
+        Age : Age,
+        Zodiac: Zodiac,
+        Star: Star,
+        Planet: Planet,
+        Password: Password,
+        RepeatPassword: RepeatPassword,
+        Status: Status
       });
       const _UserData = await _RegisterUserToSave.save();
       res.json({
@@ -99,4 +101,30 @@ const getAllUsers = async (req, res) => {
     })
   }
 };
-module.exports = { UserLogin, UserRegister, getAllUsers };
+
+const UpdateUser = async (req, res) => {
+
+  try {
+
+    const GetId = req.params.id;
+    const UserregistertoSave = {
+      Status: req.body.Status
+    }
+    console.log(UserregistertoSave);
+  
+    const UpdateById = await _UserCluster.updateOne({_id: GetId}, {$set: UserregistertoSave});
+  
+    res.json({
+      message: "user Updated",
+      Data: true,
+      Result: UpdateById
+    });
+
+  } catch (error) {
+    res.json({
+      Error: error.message,
+      });
+  }
+  };
+
+module.exports = { UserLogin, UserRegister, getAllUsers,UpdateUser};
